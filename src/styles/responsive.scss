@@ -1,33 +1,39 @@
 /** @format */
 
 @media screen and (min-width: 768px) {
-  .app-bar {
-    grid-template-columns: 1fr auto;
-    padding: 8px 30px;
+  appbar-component {
+    .app-bar {
+      grid-template-columns: 1fr auto;
+      padding: 8px 30px;
 
-    .app-bar__menu {
-      display: none;
-    }
+      .app-bar__menu {
+        display: none;
+      }
 
-    .app-bar__nav {
-      position: unset;
-      top: unset;
-      left: unset;
-      height: unset;
-      width: unset;
-      transition: unset;
-      background-color: unset;
+      .app-bar__nav {
+        position: unset;
+        top: unset;
+        left: unset;
+        height: unset;
+        width: unset;
+        transition: unset;
+        background-color: unset;
 
-      ul {
-        padding: unset;
-        grid-template-columns: repeat(3, auto);
-        justify-items: center;
+        .app-bar__close {
+          display: none;
+        }
 
-        li {
-          a {
-            width: 100px;
-            color: #fefecc;
-            justify-content: center;
+        ul {
+          padding: unset;
+          grid-template-columns: repeat(3, auto);
+          justify-items: center;
+
+          li {
+            a {
+              width: 100px;
+              color: #fefecc;
+              justify-content: center;
+            }
           }
         }
       }
@@ -35,7 +41,7 @@
   }
 
   .hero {
-    height: 400px;
+    height: 450px;
   }
 
   .restaurant {
@@ -47,13 +53,13 @@
 
     .restaurant__list {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
 
-      .card {
-        .card__header {
-          .card__header__image {
-            height: 150px;
-          }
-        }
+  .card {
+    .card__header {
+      .card__header__image {
+        height: 150px;
       }
     }
   }

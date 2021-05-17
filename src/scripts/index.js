@@ -1,18 +1,19 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.scss';
 import '../styles/responsive.scss';
+import './views/components/appbar-component';
+import App from './views/app';
 
-const menuButton = document.getElementById('menuButton');
-const navbar = document.querySelector('.app-bar__nav');
-
-menuButton.addEventListener('click', event => {
-  navbar.classList.toggle('open');
-  event.stopPropagation();
+const app = new App({
+  content: document.getElementById('mainContent'),
 });
 
-document.body.addEventListener('click', event => {
-  navbar.classList.remove('open');
-  event.stopPropagation();
+window.addEventListener('hashchange', () => {
+  app.renderPage();
+});
+
+window.addEventListener('load', () => {
+  app.renderPage();
 });
 
 const footerYear = document.getElementById('footer__year');

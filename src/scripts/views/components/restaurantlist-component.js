@@ -10,18 +10,10 @@ class RestaurantlistComponent extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = `
-      <section class="restaurant">
-        <h2 class="restaurant__label">Explore Cafe</h2>
-
-        <div id="restaurantList" class="restaurant__list"></div>
-      </section>
-    `;
-
     this._restaurants.forEach((restaurant) => {
       const restaurantItemElement = document.createElement('restaurantitem-component');
       restaurantItemElement.restaurant = restaurant;
-      document.getElementById('restaurantList').appendChild(restaurantItemElement);
+      this.appendChild(restaurantItemElement);
     });
   }
 }

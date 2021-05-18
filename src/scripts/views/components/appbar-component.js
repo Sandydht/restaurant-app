@@ -17,37 +17,25 @@ class AppbarComponent extends HTMLElement {
   }
 
   handleCloseDrawer() {
-    document.querySelectorAll('#closeButton, .app-bar__nav-item').forEach((elm) => {
-      elm.addEventListener('click', (event) => {
-        this.navbarElement.classList.remove('open');
-        event.stopPropagation();
-      });
+    document.body.addEventListener('click', (event) => {
+      this.navbarElement.classList.remove('open');
+      event.stopPropagation();
     });
   }
 
   render() {
     this.innerHTML = `
-      <header class="app-bar">
-        <div class="app-bar__menu">
-          <button aria-label="menu button" id="menuButton">☰</button>
-        </div>
+      <button aria-label="menu button" id="menuButton" class="app-bar__menu">☰</button>
 
-        <div class="app-bar__brand">
-          <h1>Cafetaria</h1>
-        </div>
+      <h1 class="app-bar__brand">Cafetaria</h1>
 
-        <nav class="app-bar__nav">
-          <div class="app-bar__close">
-            <button aria-label="close button" id="closeButton">&times;</button>
-          </div>
-
-          <ul>
-            <li><a class="app-bar__nav-item" href="#/home">Home</a></li>
-            <li><a class="app-bar__nav-item" href="#/favorite">Favorite</a></li>
-            <li><a class="app-bar__nav-item" href="https://www.linkedin.com/in/sandy-dwi-handoko-trapsilo-a56008185" target="_blank" rel="noreferrer">About Us</a></li>
-          </ul>
-        </nav>
-      </header>
+      <nav class="app-bar__nav">
+        <ul class="app-bar__nav-list">
+          <li><a class="app-bar__nav-item" href="#/home">Home</a></li>
+          <li><a class="app-bar__nav-item" href="#/favorite">Favorite</a></li>
+          <li><a class="app-bar__nav-item" href="https://www.linkedin.com/in/sandy-dwi-handoko-trapsilo-a56008185" target="_blank" rel="noreferrer">About Us</a></li>
+        </ul>
+      </nav>
     `;
 
     this.handleOpenDrawer();

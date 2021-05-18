@@ -18,13 +18,17 @@ const Home = {
       const restaurants = await RestaurantDbSource.restaurantList();
       mainContent.innerHTML = `
         <hero-component></hero-component>
-        <restaurantlist-component></restaurantlist-component>
+
+        <section id="restaurant" class="restaurant">
+          <h2 class="restaurant__label">Explore Cafe</h2>
+          <restaurantlist-component></restaurantlist-component>
+        </section>
       `;
       document.querySelector('restaurantlist-component').restaurants = restaurants;
     } catch (e) {
       mainContent.innerHTML = `
         <section>
-          <h2 style="text-align: center; margin: 30px 20px; font-size: 20pt;">Data Tidak Tersedia</h2>
+          <h2 style="text-align: center; margin: 30px 20px; font-size: 20pt;">Gagal Memuat Data</h2>
         </section>
       `;
     }

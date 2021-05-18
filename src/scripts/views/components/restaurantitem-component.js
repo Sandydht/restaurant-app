@@ -13,7 +13,7 @@ class RestaurantitemComponent extends HTMLElement {
     this.innerHTML = `
       <article class="card">
         <div class="card__header">
-          <img class="card__header__image" src="${CONFIG.BASE_IMAGE_URL + this._restaurant.pictureId}" alt="${this._restaurant.name}">
+          <img height=200 src="${CONFIG.BASE_IMAGE_URL + this._restaurant.pictureId}" alt="${this._restaurant.name}">
           <p class="card__header__city">${this._restaurant.city}</p>
         </div>
 

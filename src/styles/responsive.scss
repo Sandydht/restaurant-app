@@ -2,38 +2,32 @@
 
 @media screen and (min-width: 768px) {
   appbar-component {
-    .app-bar {
-      grid-template-columns: 1fr auto;
-      padding: 8px 30px;
+    grid-template-columns: 1fr auto;
+    padding: 8px 30px;
 
-      .app-bar__menu {
-        display: none;
-      }
+    .app-bar__menu {
+      display: none;
+    }
 
-      .app-bar__nav {
-        position: unset;
-        top: unset;
-        left: unset;
-        height: unset;
-        width: unset;
-        transition: unset;
-        background-color: unset;
+    .app-bar__nav {
+      position: unset;
+      top: unset;
+      left: unset;
+      height: unset;
+      width: unset;
+      transition: unset;
+      background-color: unset;
 
-        .app-bar__close {
-          display: none;
-        }
+      .app-bar__nav-list {
+        padding: unset;
+        grid-template-columns: repeat(3, auto);
+        justify-items: center;
 
-        ul {
-          padding: unset;
-          grid-template-columns: repeat(3, auto);
-          justify-items: center;
-
-          li {
-            a {
-              width: 100px;
-              color: #fefecc;
-              justify-content: center;
-            }
+        li {
+          .app-bar__nav-item {
+            width: 100px;
+            color: #fefecc;
+            justify-content: center;
           }
         }
       }
@@ -51,31 +45,27 @@
       font-size: 24pt;
     }
 
-    .restaurant__list {
+    restaurantlist-component {
       grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .card {
-    .card__header {
-      .card__header__image {
-        height: 150px;
-      }
     }
   }
 }
 
 @media screen and (min-width: 1024px) {
   .restaurant {
-    .restaurant__list {
+    restaurantlist-component {
       grid-template-columns: repeat(3, 1fr);
     }
+  }
+
+  .restaurant-detail {
+    width: 750px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .restaurant {
-    .restaurant__list {
+    restaurantlist-component {
       grid-template-columns: repeat(4, 1fr);
     }
   }

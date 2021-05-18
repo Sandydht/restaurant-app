@@ -17,8 +17,8 @@ const Favorite = {
       `;
     } catch (e) {
       mainContent.innerHTML = `
-        <section>
-          <h2 style="text-align: center; margin: 30px 20px; font-size: 20pt;">Gagal Memuat Data</h2>
+        <section class="restaurant">
+          <h2 class="restaurant__label">Gagal Memuat Data</h2>
         </section>
       `;
     }

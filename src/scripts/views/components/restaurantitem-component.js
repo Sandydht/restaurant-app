@@ -18,11 +18,15 @@ class RestaurantitemComponent extends HTMLElement {
         </div>
 
         <div class="card__body">
-          <p class="card__body__rating">Rating ${this._restaurant.rating}</p>
+          <p class="card__subtitle">Rating ${this._restaurant.rating}</p>
 
-          <p class="card__body__name"><a href="#/detail/${this._restaurant.id}">${this._restaurant.name}</a></p>
+          <p class="card__title">${this._restaurant.name}</p>
 
-          <p class="card__body__description">${this._restaurant.description}</p>
+          <p class="card__description">${this._restaurant.description}</p>
+        </div>
+
+        <div class="card__actions">
+          <a href="#/detail/${this._restaurant.id}">See detail</a>
         </div>
     </article>
     `;

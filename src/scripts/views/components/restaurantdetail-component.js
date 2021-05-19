@@ -10,8 +10,39 @@ class RestaurantdetailComponent extends HTMLElement {
     this.render();
   }
 
+  printCategory() {
+    this._restaurant.categories.forEach((category) => {
+      const categoryItem = document.createElement('li');
+      categoryItem.innerHTML = category.name;
+      this.querySelector('#restaurantCategory').appendChild(categoryItem);
+    });
+  }
+
+  printFoodMenu() {
+    this._restaurant.menus.foods.forEach((food) => {
+      const foodItem = document.createElement('li');
+      foodItem.innerHTML = food.name;
+      this.querySelector('#foodList').appendChild(foodItem);
+    });
+  }
+
+  printDrinkMenu() {
+    this._restaurant.menus.drinks.forEach((drink) => {
+      const drinkItem = document.createElement('li');
+      drinkItem.innerHTML = drink.name;
+      this.querySelector('#drinkList').appendChild(drinkItem);
+    });
+  }
+
+  printCustomerReviews() {
+    this._restaurant.customerReviews.forEach((review) => {
+      const reviewItem = document.createElement('reviewitem-component');
+      reviewItem.review = review;
+      this.querySelector('#customerReviews').appendChild(reviewItem);
+    });
+  }
+
   render() {
-    console.log(this._restaurant);
     this.innerHTML = `
       <article class="card">
         <div class="card__header">
@@ -50,29 +81,10 @@ class RestaurantdetailComponent extends HTMLElement {
       </div>
     `;
 
-    this._restaurant.categories.forEach((category) => {
-      const categoryItem = document.createElement('li');
-      categoryItem.innerHTML = category.name;
-      document.getElementById('restaurantCategory').appendChild(categoryItem);
-    });
-
-    this._restaurant.menus.foods.forEach((food) => {
-      const foodItem = document.createElement('li');
-      foodItem.innerHTML = food.name;
-      document.getElementById('foodList').appendChild(foodItem);
-    });
-
-    this._restaurant.menus.drinks.forEach((drink) => {
-      const drinkItem = document.createElement('li');
-      drinkItem.innerHTML = drink.name;
-      document.getElementById('drinkList').appendChild(drinkItem);
-    });
-
-    this._restaurant.customerReviews.forEach((review) => {
-      const reviewItem = document.createElement('reviewitem-component');
-      reviewItem.review = review;
-      document.getElementById('customerReviews').appendChild(reviewItem);
-    });
+    this.printCategory();
+    this.printFoodMenu();
+    this.printDrinkMenu();
+    this.printCustomerReviews();
   }
 }
 

@@ -17,7 +17,7 @@ const Detail = {
       const url = UrlParser.parseActiveUrlWithoutCombiner();
       const { restaurant } = await RestaurantDbSource.detailRestaurant(url.id);
       mainContent.innerHTML = `
-        <section class="restaurant__detail">
+        <section id="restaurant" class="restaurant__detail">
           <h2 class="restaurant__detail__label">Detail Cafe</h2>
           <restaurantdetail-component></restaurantdetail-component>
         </section> 

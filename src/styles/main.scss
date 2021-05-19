@@ -19,6 +19,8 @@ html {
 
 body {
   min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 button {
@@ -46,6 +48,20 @@ img {
   object-fit: cover;
   object-position: center;
   width: 100%;
+}
+
+// Skiplink
+.skip-link {
+  z-index: 1000;
+  padding: 10px;
+  background-color: $colorPrimary;
+  color: $colorSecondary;
+  position: fixed;
+  top: -100px;
+}
+
+.skip-link:focus {
+  top: 100px;
 }
 
 // Appbar component
@@ -112,6 +128,35 @@ main {
   display: grid;
   align-items: center;
   justify-content: center;
+}
+
+// Loader
+.loader {
+  border: 10px solid $colorSecondary;
+  border-radius: 50%;
+  border-top: 10px solid $colorPrimary;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 // Hero component
@@ -260,6 +305,20 @@ restaurantlist-component {
     a:hover {
       font-weight: bold;
     }
+  }
+}
+
+// Footer
+.footer {
+  padding: 10px;
+  background-color: $colorPrimary;
+  color: $colorSecondary;
+  text-align: center;
+  font-size: 14pt;
+
+  .footer-brand {
+    font-style: italic;
+    font-weight: bold;
   }
 }
 

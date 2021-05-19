@@ -6,11 +6,11 @@ class AppbarComponent extends HTMLElement {
   }
 
   get navbarElement() {
-    return document.querySelector('.app-bar__nav');
+    return this.querySelector('.app-bar__nav');
   }
 
   handleOpenDrawer() {
-    document.getElementById('menuButton').addEventListener('click', (event) => {
+    this.querySelector('#menuButton').addEventListener('click', (event) => {
       this.navbarElement.classList.toggle('open');
       event.stopPropagation();
     });

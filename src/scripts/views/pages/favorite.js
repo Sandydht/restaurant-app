@@ -1,4 +1,8 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-underscore-dangle */
+
+import '../components/restaurantlist-component';
+import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
 
 const Favorite = {
   async render() {
@@ -10,11 +14,22 @@ const Favorite = {
   async afterRender() {
     const mainContent = document.getElementById('mainContent');
     try {
-      mainContent.innerHTML = `
-        <section id="restaurant" class="restaurant">
-          <h2 class="restaurant__label">Favorite Cafe</h2>
-        </section>
-      `;
+      const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
+      if (restaurants.length === 0) {
+        mainContent.innerHTML = `
+          <section id="restaurant" class="restaurant">
+            <h2 class="restaurant__label">No Data To Display</h2>
+          </section>
+        `;
+      } else {
+        mainContent.innerHTML = `
+          <section id="restaurant" class="restaurant">
+            <h2 class="restaurant__label">Favorite Cafe</h2>
+            <restaurantlist-component></restaurantlist-component>
+          </section>
+        `;
+        document.querySelector('restaurantlist-component').restaurants = restaurants;
+      }
     } catch (e) {
       mainContent.innerHTML = `
         <section class="restaurant">

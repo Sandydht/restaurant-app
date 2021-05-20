@@ -17,11 +17,11 @@ const Home = {
 
     try {
       const restaurants = await RestaurantDbSource.restaurantList();
+
       mainContent.innerHTML = `
         <hero-component></hero-component>
         <section id="restaurant" class="restaurant">
           <h2 class="restaurant__label">Explore Cafe</h2>
-
           <restaurantlist-component></restaurantlist-component>
         </section>
       `;

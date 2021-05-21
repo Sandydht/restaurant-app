@@ -7,15 +7,15 @@ class FavoriterestaurantComponent extends HTMLElement {
     this.render();
   }
 
-  set button(button) {
-    this._button = button;
+  set icon(icon) {
+    this._icon = icon;
     this.render();
   }
 
   render() {
     this.innerHTML = `
-      <button aria-label="${this._button ? 'unlike this restaurant' : 'like this restaurant'}" id="likeButton" class="float-button">
-        ${this._button ? ' <i class="fa fa-heart" aria-hidden="true"></i>' : '<i class="fa fa-heart-o" aria-hidden="true"></i>'}
+      <button aria-label="${this._icon ? 'unlike this restaurant' : 'like this restaurant'}" id="likeButton" class="float-button">
+        ${this._icon ? ' <i class="fa fa-heart" aria-hidden="true"></i>' : '<i class="fa fa-heart-o" aria-hidden="true"></i>'}
       </button>
     `;
 

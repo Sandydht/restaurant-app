@@ -18,3 +18,9 @@ window.addEventListener('load', () => {
   app.renderPage();
   swRegister();
 });
+
+// document.getElementById('click').addEventListener('click', () => {
+//   console.log('click');
+// });
+
+// document.getElementById('click').dispatchEvent(new Event('click'));

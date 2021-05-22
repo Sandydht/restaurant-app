@@ -2,8 +2,12 @@
 /* eslint-disable no-underscore-dangle */
 
 class FavoriterestaurantComponent extends HTMLElement {
-  set clickEvent(click) {
-    this._click = click;
+  connectedCallback() {
+    this.ariaLabel = this.getAttribute('aria-label') || null;
+  }
+
+  set click(clickEvent) {
+    this._clickEvent = clickEvent;
     this.render();
   }
 
@@ -14,12 +18,12 @@ class FavoriterestaurantComponent extends HTMLElement {
 
   render() {
     this.innerHTML = `
-      <button aria-label="${this._icon ? 'unlike this restaurant' : 'like this restaurant'}" id="likeButton" class="float-button">
+      <button aria-label="${this._icon ? this.ariaLabel = 'unlike this restaurant' : this.ariaLabel = 'like this restaurant'}" id="likeButton" class="float-button">
         ${this._icon ? ' <i class="fa fa-heart" aria-hidden="true"></i>' : '<i class="fa fa-heart-o" aria-hidden="true"></i>'}
       </button>
     `;
 
-    this.querySelector('#likeButton').addEventListener('click', this._click);
+    this.addEventListener('click', this._clickEvent);
   }
 }
 

@@ -29,7 +29,7 @@ const FavoriteButtonInitiator = {
   _renderFavorite() {
     this._buttonContainer.icon = false;
 
-    this._buttonContainer.clickEvent = async () => {
+    this._buttonContainer.click = async () => {
       await this._favoriteRestaurants.putRestaurant(this._restaurant);
       this._renderButton();
     };
@@ -38,7 +38,7 @@ const FavoriteButtonInitiator = {
   _renderFavorited() {
     this._buttonContainer.icon = true;
 
-    this._buttonContainer.clickEvent = async () => {
+    this._buttonContainer.click = async () => {
       await this._favoriteRestaurants.deleteRestaurant(this._restaurant.id);
       this._renderButton();
     };

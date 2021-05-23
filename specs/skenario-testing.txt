@@ -23,6 +23,43 @@
 4. Restaurant dihapus dari daftar restaurant yang disukai. (selesai)
 	- Ternyata restaurant tidak ada dalam daftar restaurant yang disukai.
 
+# TODO 
+1. Alur negatid menyimpan restaurant tanpa ID tidak boleh menyebabkan kegagalan. (selesai)
+
+--------------------------------------------------------------------------
+
+# Use case
+1. Pengguna memasukan nama restaurant yang dicari. (selesai)
+2. Restaurant yang dicari ditampilkan. (selesai)
+	a. Bila restaurant tidak ada, tampilkan informasi bahwa tidak ada restaurant yang ditemukan.
+
+# Studi kasus
+1. Bila pengguna memasukan query 'restaurant A', maka: (selesai)
+	a. Presenter akan meminta ke model untuk memberikan restaurant yang disukai dengan yang cocok untuk pencarian 'restaurant A'. 
+	b. Presenter akan menampilkan View (DOM) semua restaurant yang dikembalikan ke Model.
+2. Bila pengguna memasukan query kosong, maka: (selesai)
+	a. Presenter akan meminta Model untuk memberikan semua restaurant yang disukai.
+	b. Presenter akan menampilkan ke View semua restaurant yang disukai.
+3. Bila pengguna memasukan query, dan tidak ada restaurant yang cocok, maka:(selesai)
+	a. Presenter meminta Model untuk mencari restaurant.
+	b. Presenter akan menampilkan informasi tidak ada restaurant yang ditemukan pada View.
+	
 # TODO
-1. Memberi nama yang lebih berbeda untuk tombol like.
-2. Alur negatid menyimpan restaurant tanpa ID tidak boleh menyebabkan kegagalan. (selesai)
+1. Ringkas kode untuk mempersiapkan tes. (selesai)
+
+-------------------------------------------------------------------------
+
+# Use case
+1. Buka halaman restaurant yang disukai.
+2. Tampilkan semua restaurant yang disukai.
+	a. Presenter meminta semua daftar restaurant yang disukai kepada Model.
+	b. Model mengembalikan daftar restaurant.
+	c. Presenter meminta View menampilkan daftar restaurant.
+3. Bila tidak ada restaurant yang disukai, berikan informasi.
+	a. Presenter meminta semua daftar restaurant yang disukai kepada Model.
+	b. Model mengembalikan daftar kosong.
+	c. Presenter meminta View menampilkan informasi bahwa belum ada restaurant yang disukai. (selesai)
+
+# TODO
+1. Template hasil pencarian menggunakan template menampilkan restaurant yang disukai.
+2. Mengubah nama FavoriteRestaurantSearchView agar lebih general.

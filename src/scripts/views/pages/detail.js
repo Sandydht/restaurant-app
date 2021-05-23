@@ -3,7 +3,7 @@
 import UrlParser from '../../routes/url-parser';
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
-import FavoriteButtonInitiator from '../../utils/favorite-button-initiator';
+import FavoriteButtonPresenter from '../../utils/favorite-button-presenter';
 import '../components/restaurantdetail-component';
 import '../components/favoriterestaurant-component';
 
@@ -29,7 +29,7 @@ const Detail = {
 
       document.querySelector('restaurantdetail-component').restaurant = restaurant;
 
-      FavoriteButtonInitiator.init({
+      FavoriteButtonPresenter.init({
         buttonContainer: document.querySelector('favoriterestaurant-component'),
         favoriteRestaurants: FavoriteRestaurantIdb,
         restaurant,

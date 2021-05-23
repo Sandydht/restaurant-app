@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-underscore-dangle */
 
-const FavoriteButtonInitiator = {
+const FavoriteButtonPresenter = {
   async init({ buttonContainer, favoriteRestaurants, restaurant }) {
     this._buttonContainer = buttonContainer;
     this._favoriteRestaurants = favoriteRestaurants;
@@ -45,4 +45,4 @@ const FavoriteButtonInitiator = {
   },
 };
 
-export default FavoriteButtonInitiator;
+export default FavoriteButtonPresenter;

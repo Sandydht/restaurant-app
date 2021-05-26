@@ -8,28 +8,30 @@ import RestaurantDbSource from '../../data/restaurantdb-source';
 const Home = {
   async render() {
     return `
+    <div id="content" class="content__wrapper">
       <div class="loader"></div>
-    `;
+    </div>`;
   },
 
   async afterRender() {
-    const mainContent = document.getElementById('mainContent');
+    const content = document.getElementById('content');
 
     try {
       const restaurants = await RestaurantDbSource.restaurantList();
 
-      mainContent.innerHTML = `
+      content.innerHTML = `
         <hero-component></hero-component>
-        <section id="restaurant" class="restaurant">
+        <section class="restaurant" id="restaurant">
           <h2 class="restaurant__label">Explore Cafe</h2>
           <restaurantlist-component></restaurantlist-component>
         </section>
       `;
+
       document.querySelector('restaurantlist-component').restaurants = restaurants;
     } catch (e) {
-      mainContent.innerHTML = ` 
-        <section class="restaurant">
-          <h2 class="restaurant__label">Gagal Memuat Data</h2>
+      content.innerHTML = `
+        <section>
+          <h2 style="font-size: 20pt;">Gagal memuat data</h2>
         </section>
       `;
     }

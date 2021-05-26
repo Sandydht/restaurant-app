@@ -7,7 +7,7 @@ import App from './views/app';
 import swRegister from './utils/sw-register';
 
 const app = new App({
-  content: document.getElementById('mainContent'),
+  content: document.querySelector('main'),
 });
 
 window.addEventListener('hashchange', () => {
@@ -18,9 +18,3 @@ window.addEventListener('load', () => {
   app.renderPage();
   swRegister();
 });
-
-// document.getElementById('click').addEventListener('click', () => {
-//   console.log('click');
-// });
-
-// document.getElementById('click').dispatchEvent(new Event('click'));

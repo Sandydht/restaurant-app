@@ -123,16 +123,18 @@ appbar-component {
   }
 }
 
-// Main
-main {
+// Content wrapper
+.content__wrapper {
   display: grid;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 // Loader
 .loader {
-  border: 10px solid $colorSecondary;
+  border: 10px solid #f4f4f4;
   border-radius: 50%;
   border-top: 10px solid $colorPrimary;
   width: 60px;
@@ -197,61 +199,51 @@ main {
   }
 }
 
-// Restaurant list
+// Restaurant list component
 restaurantlist-component {
   display: grid;
   gap: 20px;
 }
 
-// Restaurant detail
-.restaurant__detail {
-  padding: 20px;
+// Restaurant detail component
+restaurantdetail-component {
+  display: grid;
+  gap: 20px;
 
-  .restaurant__detail__label {
-    font-size: 20pt;
-    text-align: center;
-    margin: 30px;
+  .categories,
+  .menu {
+    margin-top: 10px;
+
+    ul {
+      margin-left: 20px;
+    }
   }
 
-  restaurantdetail-component {
+  .menu {
     display: grid;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 10px;
 
-    .categories,
-    .menu {
-      margin-top: 10px;
+    .card__subtitle {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
 
-      ul {
-        margin-left: 20px;
-      }
+  .restaurant__reviews {
+    .review__label {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      font-size: 18pt;
     }
 
-    .menu {
+    .review__list {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0 10px;
+      gap: 20px;
 
-      .card__subtitle {
-        grid-column-start: 1;
-        grid-column-end: 3;
-      }
-    }
-
-    .restaurant__reviews {
-      .review__label {
-        text-align: center;
-        margin-top: 30px;
-        margin-bottom: 20px;
-        font-size: 18pt;
-      }
-
-      .review__list {
-        display: grid;
-        gap: 20px;
-
-        p {
-          margin-bottom: 10px;
-        }
+      p {
+        margin-bottom: 10px;
       }
     }
   }
@@ -377,13 +369,13 @@ restaurantlist-component {
     height: 400px;
   }
 
-  // Restaurant list
+  // Restaurant list component
   restaurantlist-component {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  // Restaurant detail
-  .restaurant__detail {
+  // Restaurant detail component
+  restaurantdetail-component {
     width: 700px;
   }
 }

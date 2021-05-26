@@ -17,8 +17,8 @@ class App {
       await page.afterRender();
     } catch (e) {
       this._content.innerHTML = `
-        <section>
-          <h2 style="text-align: center; margin: 30px 20px; font-size: 20pt;">Halaman Tidak Ditemukan</h2>
+        <section class="content__wrapper">
+          <h2 style="font-size: 20pt;">Halaman Tidak Ditemukan</h2>
         </section>
       `;
     }

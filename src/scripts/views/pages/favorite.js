@@ -1,42 +1,23 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-new */
 /* eslint-disable no-underscore-dangle */
 
 import '../components/restaurantlist-component';
 import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
+import FavoriteRestaurantSearchView from './liked-restaurants/favorite-restaurant-search-view';
+import FavoriteRestaurantSearchPresenter from './liked-restaurants/favorite-restaurant-search-presenter';
+import FavoriteRestaurantShowPresenter from './liked-restaurants/favorite-restaurant-show-presenter';
+
+const view = new FavoriteRestaurantSearchView();
 
 const Favorite = {
   async render() {
-    return `
-      <div class="loader"></div>
-    `;
+    return view.getTemplate();
   },
 
   async afterRender() {
-    const mainContent = document.getElementById('mainContent');
-    try {
-      const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
-      if (restaurants.length === 0) {
-        mainContent.innerHTML = `
-          <section id="restaurant" class="restaurant">
-            <h2 class="restaurant__label">No Data To Display</h2>
-          </section>
-        `;
-      } else {
-        mainContent.innerHTML = `
-          <section id="restaurant" class="restaurant">
-            <h2 class="restaurant__label">Favorite Cafe</h2>
-            <restaurantlist-component></restaurantlist-component>
-          </section>
-        `;
-        document.querySelector('restaurantlist-component').restaurants = restaurants;
-      }
-    } catch (e) {
-      mainContent.innerHTML = `
-        <section class="restaurant">
-          <h2 class="restaurant__label">Gagal Memuat Data</h2>
-        </section>
-      `;
-    }
+    new FavoriteRestaurantSearchPresenter({ view, favoriteRestaurants: FavoriteRestaurantIdb });
+    new FavoriteRestaurantShowPresenter({ view, favoriteRestaurants: FavoriteRestaurantIdb });
   },
 };
 

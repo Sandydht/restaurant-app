@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-underscore-dangle */
 
 class FavoriterestaurantComponent extends HTMLElement {
@@ -27,4 +28,4 @@ class FavoriterestaurantComponent extends HTMLElement {
   }
 }
 
-customElements.define('favoriterestaurant-component', FavoriterestaurantComponent);
+customElements.get('favoriterestaurant-component') || customElements.define('favoriterestaurant-component', FavoriterestaurantComponent);

@@ -10,21 +10,23 @@ import '../components/favoriterestaurant-component';
 const Detail = {
   async render() {
     return `
+    <div id="content" class="content__wrapper">
       <div class="loader"></div>
-    `;
+    </div>`;
   },
 
   async afterRender() {
-    const mainContent = document.getElementById('mainContent');
+    const content = document.getElementById('content');
+
     try {
       const url = UrlParser.parseActiveUrlWithoutCombiner();
       const { restaurant } = await RestaurantDbSource.detailRestaurant(url.id);
-      mainContent.innerHTML = `
-        <section id="restaurant" class="restaurant__detail">
-          <h2 class="restaurant__detail__label">Detail Cafe</h2>
+      content.innerHTML = `
+        <section class="restaurant">
+          <h2 class="restaurant__label">Detail Cafe</h2>
           <restaurantdetail-component></restaurantdetail-component>
           <favoriterestaurant-component></favoriterestaurant-component>
-        </section> 
+        </section>
       `;
 
       document.querySelector('restaurantdetail-component').restaurant = restaurant;
@@ -35,9 +37,9 @@ const Detail = {
         restaurant,
       });
     } catch (e) {
-      mainContent.innerHTML = `
-        <section class="restaurant">
-          <h2 class="restaurant__label">Gagal Memuat Data</h2>
+      content.innerHTML = `
+        <section>
+          <h2 style="font-size: 20pt;">Gagal memuat data</h2>
         </section>
       `;
     }

@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-underscore-dangle */
 
 import './restaurantitem-component';
@@ -18,4 +20,4 @@ class RestaurantlistComponent extends HTMLElement {
   }
 }
 
-customElements.define('restaurantlist-component', RestaurantlistComponent);
+customElements.get('restaurantlist-component') || customElements.define('restaurantlist-component', RestaurantlistComponent);

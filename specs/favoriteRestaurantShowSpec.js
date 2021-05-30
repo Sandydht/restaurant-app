@@ -6,7 +6,6 @@
 import FavoriteRestaurantShowPresenter from '../src/scripts/views/pages/liked-restaurants/favorite-restaurant-show-presenter';
 import FavoriteRestaurantSearchView from '../src/scripts/views/pages/liked-restaurants/favorite-restaurant-search-view';
 import FavoriteRestaurantIdb from '../src/scripts/data/favoriterestaurant-idb';
-import '../src/scripts/views/components/restaurantlist-component';
 
 describe('Showing all favorite restaurants', () => {
   let view;

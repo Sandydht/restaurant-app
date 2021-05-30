@@ -15,11 +15,7 @@ class RestaurantitemComponent extends HTMLElement {
       <article class="card">
         <div class="card__header">
           <picture>
-            <source media="(min-width: 1024px)" srcset="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL_LARGE + this._restaurant.pictureId : ''}" type="image/webp">
-            <source media="(min-width: 1024px)" srcset="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL_LARGE + this._restaurant.pictureId : ''}" type="image/jpeg">
-
-            <source media="(min-width: 768px)" srcset="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL_MEDIUM + this._restaurant.pictureId : ''}" type="image/webp">
-            <source media="(min-width: 768px)" srcset="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL_MEDIUM + this._restaurant.pictureId : ''}" type="image/jpeg">
+            <source media="(min-width: 1024px)" srcset="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL_MEDIUM + this._restaurant.pictureId : ''}">
 
             <img height=200 class="lazyload" data-src="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL_SMALL + this._restaurant.pictureId : ''}" alt="${this._restaurant.name}">
           </picture>

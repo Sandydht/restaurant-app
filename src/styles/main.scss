@@ -167,7 +167,7 @@ appbar-component {
       rgba($colorTeritary, 0.6),
       rgba($colorTeritary, 0.6)
     ),
-    url("/images/heros/hero-image_2.jpg");
+    url("/images/hero-image_2-small.jpg");
   height: 350px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -179,10 +179,8 @@ appbar-component {
   text-align: center;
   line-height: 1.5em;
   color: $colorSecondary;
-  font-family: Arial, Helvetica, sans-serif;
 
   .hero__brand {
-    font-family: "Times New Roman", Times, serif;
     font-style: italic;
     font-weight: bold;
   }
@@ -392,8 +390,26 @@ restaurantdetail-component {
     }
   }
 
+  // Card
+  .card {
+    .card__body {
+      .card__description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 12;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+
   // Hero component
   .hero {
+    background-image: linear-gradient(
+        rgba($colorTeritary, 0.6),
+        rgba($colorTeritary, 0.6)
+      ),
+      url("/images/hero-image_2-large.jpg");
     height: 450px;
   }
 

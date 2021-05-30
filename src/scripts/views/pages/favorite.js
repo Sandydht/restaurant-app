@@ -2,7 +2,6 @@
 /* eslint-disable no-new */
 /* eslint-disable no-underscore-dangle */
 
-import '../components/restaurantlist-component';
 import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
 import FavoriteRestaurantSearchView from './liked-restaurants/favorite-restaurant-search-view';
 import FavoriteRestaurantSearchPresenter from './liked-restaurants/favorite-restaurant-search-presenter';

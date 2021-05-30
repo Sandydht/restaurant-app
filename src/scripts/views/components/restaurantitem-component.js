@@ -14,7 +14,16 @@ class RestaurantitemComponent extends HTMLElement {
     this.innerHTML = `
       <article class="card">
         <div class="card__header">
-          <img height=200 src="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + this._restaurant.pictureId : ''} " alt="${this._restaurant.name}">
+          <picture>
+            <source media="(min-width: 1024px)" srcset="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL_LARGE + this._restaurant.pictureId : ''}" type="image/webp">
+            <source media="(min-width: 1024px)" srcset="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL_LARGE + this._restaurant.pictureId : ''}" type="image/jpeg">
+
+            <source media="(min-width: 768px)" srcset="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL_MEDIUM + this._restaurant.pictureId : ''}" type="image/webp">
+            <source media="(min-width: 768px)" srcset="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL_MEDIUM + this._restaurant.pictureId : ''}" type="image/jpeg">
+
+            <img height=200 class="lazyload" data-src="${this._restaurant.pictureId ? CONFIG.BASE_IMAGE_URL_SMALL + this._restaurant.pictureId : ''}" alt="${this._restaurant.name}">
+          </picture>
+
           <p class="card__header__city">${this._restaurant.city || '-'}</p>
         </div>
 

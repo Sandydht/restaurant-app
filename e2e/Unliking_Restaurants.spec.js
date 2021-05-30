@@ -1,15 +1,15 @@
-/* eslint-disable no-plusplus */
+/* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
 
 const assert = require('assert');
 
-Feature('Liking Restaurants');
+Feature('Unliking Restaurants');
 
 Before(({ I }) => {
   I.amOnPage('/#/favorite');
 });
 
-Scenario('liking one restaurant', async ({ I }) => {
+Scenario('unliking one restaurant', async ({ I }) => {
   I.see('No Data To Display', '.restaurant-item__not__found h2');
 
   I.amOnPage('/');
@@ -26,4 +26,13 @@ Scenario('liking one restaurant', async ({ I }) => {
   I.seeElement('.card__title');
   const likedRestaurantName = await I.grabTextFrom('.card__title');
   assert.strictEqual(firstRestaurantName, likedRestaurantName);
+
+  I.seeElement('.card__actions a');
+  I.click(locate('.card__actions a').first());
+
+  I.seeElement('[aria-label="unlike this restaurant"]');
+  I.click('favoriterestaurant-component');
+
+  I.amOnPage('/#/favorite');
+  I.see('No Data To Display', '.restaurant-item__not__found h2');
 });

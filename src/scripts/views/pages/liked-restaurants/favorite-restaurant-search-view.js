@@ -10,7 +10,9 @@ class FavoriteRestaurantSearchView {
     return `
       <section class="restaurant">
         <h2 class="restaurant__label">Favorite Cafe</h2>
-        <input id="query" type="text"/>
+        <div class="search__bar">
+          <input id="query" type="text" placeholder="Search restaurant..."/>
+        </div>
         <div id="restaurants"></div>
       </section>
     `;
@@ -36,7 +38,11 @@ class FavoriteRestaurantSearchView {
   }
 
   _getEmptyRestaurantTemplate() {
-    return '<div class="restaurant-item__not__found">Tidak ada daftar restaurant untuk ditampilkan</div>';
+    return `
+      <div class="restaurant-item__not__found">
+        <h2>No Data To Display</h2>
+      </div>
+    `;
   }
 }
 

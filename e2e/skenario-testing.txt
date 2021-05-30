@@ -1,11 +1,25 @@
 # Use case menyukai restaurant
 1. Buka halaman utama.
 2. Pilih salah satu restaurant, misalnya restaurant pertama.
+3. Click restaurant tersebut. (selesai)
+4. Aplikasi membawa kita ke halaman detail restaurant.
+5. Kita menekan tombol menyukai restaurant. (selesai)
+6. Kita buka halaman daftar restaurant yang disukai.
+7. Kita melihat restaurant yang telah disukai.
+
+------------------------------------------------------------------------
+
+# Use case batal menyukai restaurant
+1. Buka halaman utama.
+2. Pilih salah satu restaurant, misalnya restaurant pertama.
 3. Click restaurant tersebut.
 4. Aplikasi membawa kita ke halaman detail restaurant.
 5. Kita menekan tombol menyukai restaurant.
 6. Kita buka halaman daftar restaurant yang disukai.
 7. Kita melihat restaurant yang telah disukai.
+8. Click lagi restaurant tersebut.
+9. Aplikasi membawa kita ke halaman detail lagi.
+10. Kita menekan tombol batal menyukai restaurant.
 
 ------------------------------------------------------------------------
 

@@ -12,7 +12,7 @@ Before(({ I }) => {
 });
 
 Scenario('searching restaurants', async ({ I }) => {
-  I.see('Tidak ada daftar restaurant untuk ditampilkan', '.restaurant-item__not__found');
+  I.see('No Data To Display', '.restaurant-item__not__found h2');
 
   I.amOnPage('/');
 
@@ -25,7 +25,7 @@ Scenario('searching restaurants', async ({ I }) => {
 
     names.push(await I.grabTextFrom('.card__title'));
 
-    I.seeElement('favoriterestaurant-component');
+    I.seeElement('[aria-label="like this restaurant"]');
     I.click('favoriterestaurant-component');
 
     I.amOnPage('/');

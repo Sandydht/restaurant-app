@@ -31,7 +31,7 @@ DATA.restaurants.forEach(restaurant => {
       </div>
 
       <div class="restaurant__overview">
-        <p class="restaurant__rating">Rating ${restaurant.rating}<p>
+        <p class="restaurant__rating">Rating: ${restaurant.rating}<p>
         <p class="restaurant__name"><a href="${restaurant.id}">${restaurant.name}</a><p>
         <p class="restaurant__description">${restaurant.description}<p>
       </div>

@@ -1,10 +1,14 @@
 /** @format */
 
+// color palette
+$color__primary: #02475e;
+$color__secondary: #fefecc;
+
 @media screen and (min-width: 768px) {
   // app-bar
   .app-bar {
-    padding: 10px 20px;
     grid-template-columns: 1fr auto;
+    padding: 10px 20px;
 
     .app-bar__menu {
       display: none;
@@ -17,9 +21,9 @@
       background-color: unset;
       box-shadow: unset;
       transition: unset;
+      padding: unset;
 
       .nav__item {
-        padding-left: unset;
         display: inline-flex;
         width: 120px;
         justify-content: center;
@@ -28,6 +32,7 @@
         a {
           justify-content: center;
           font-size: 14pt;
+          color: $color__secondary;
         }
       }
     }
@@ -63,7 +68,7 @@
 @media screen and (min-width: 1024px) {
   // hero
   .hero {
-    height: 450px;
+    height: 500px;
   }
 
   // restaurant list
@@ -75,15 +80,8 @@
 }
 
 @media screen and (min-width: 1200px) {
-  // hero
-  .hero {
-    height: 500px;
-  }
-
   // restaurant list
   .restaurant {
-    .restaurant__list {
-      grid-template-columns: repeat(4, 1fr);
-    }
+    max-width: 1200px;
   }
 }

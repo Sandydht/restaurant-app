@@ -37,26 +37,23 @@
 
   // hero
   .hero {
-    background-image: linear-gradient(
-        rgba($color: #000000, $alpha: 0.5),
-        rgba($color: #000000, $alpha: 0.5)
-      ),
-      url("/images/heros/hero-image_2.jpg");
     height: 400px;
   }
 
   // restaurants
   .restaurants {
-    .restaurant__list {
+    .restaurants__list {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  // restaurant item
-  .restaurant__item {
-    .restaurant__thumbnail {
-      img {
-        height: 200px;
+  // restaurant
+  .restaurant {
+    .restaurant__body {
+      .restaurant__detail {
+        .restaurant-detail__heading {
+          height: 500px;
+        }
       }
     }
   }
@@ -70,8 +67,15 @@
 
   // restaurants
   .restaurants {
-    .restaurant__list {
+    .restaurants__list {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  // restaurant
+  .restaurant {
+    .restaurant__body {
+      max-width: 700px;
     }
   }
 }
@@ -79,7 +83,7 @@
 @media screen and (min-width: 1200px) {
   // restaurants
   .restaurants {
-    .restaurant__list {
+    .restaurants__list {
       grid-template-columns: repeat(4, 1fr);
     }
   }

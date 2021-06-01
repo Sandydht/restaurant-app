@@ -2,14 +2,26 @@
 const Favorite = {
   async render() {
     return `
-      <section class="content">
-        <h2 class="content__heading">Favorite Page</h2>
-      </section>
+      <div id="content"></div>
     `;
   },
 
   async afterRender() {
-    // Fungsi ini akan dipanggil setelah render()
+    const content = document.getElementById('content');
+
+    try {
+      content.innerHTML = `
+        <section class="restaurants">
+          <h2 class="restaurants__heading">Favorite Cafe</h2>
+        </section>
+      `;
+    } catch (e) {
+      content.innerHTML = `
+        <section>
+          <h2>Gagal memuat data</h2>
+        </section>
+      `;
+    }
   },
 };
 

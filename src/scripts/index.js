@@ -4,6 +4,7 @@ import 'regenerator-runtime';
 import '../styles/main.scss';
 import '../styles/responsive.scss';
 import App from './views/app';
+import swRegister from './utils/sw-register';
 
 const menuButton = document.getElementById('menuButton');
 const navElement = document.getElementById('navElement');
@@ -21,6 +22,7 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
+  swRegister();
 });
 
 const footerYear = document.getElementById('footerYear');

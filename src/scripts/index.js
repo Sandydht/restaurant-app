@@ -1,42 +1,27 @@
-import 'regenerator-runtime'; /* for async await transpile */
+/* eslint-disable linebreak-style */
+
+import 'regenerator-runtime';
 import '../styles/main.scss';
 import '../styles/responsive.scss';
-import DATA from './data/DATA.json'
-
-const footerYear = document.getElementById('footerYear');
-footerYear.innerHTML = new Date().getFullYear();
+import App from './views/app';
 
 const menuButton = document.getElementById('menuButton');
 const navElement = document.getElementById('navElement');
-const restaurantList = document.getElementById('restaurantList');
+const mainContent = document.getElementById('mainContent');
 
-menuButton.addEventListener('click', (event) => {
-  navElement.classList.toggle('open')
-  event.stopPropagation()
+const app = new App({
+  button: menuButton,
+  drawer: navElement,
+  content: mainContent,
 });
 
-document.body.addEventListener('click', (event) => {
-  navElement.classList.remove('open');
-  event.stopPropagation();
+window.addEventListener('hashchange', () => {
+  app.renderPage();
 });
 
-DATA.restaurants.forEach(restaurant => {
-  let html = '';
-  html =  `
-    <article class="restaurant__item">
-      <div class="restaurant__thumbnail">
-        <img src="${restaurant.pictureId}" alt="${restaurant.name}">
-
-        <p>${restaurant.city}</p>
-      </div>
-
-      <div class="restaurant__overview">
-        <p class="restaurant__rating">Rating: ${restaurant.rating}<p>
-        <p class="restaurant__name"><a href="#/detail/${restaurant.id}">${restaurant.name}</a><p>
-        <p class="restaurant__description">${restaurant.description}<p>
-      </div>
-    </article>
-  `;
-
-  restaurantList.innerHTML += html
+window.addEventListener('load', () => {
+  app.renderPage();
 });
+
+const footerYear = document.getElementById('footerYear');
+footerYear.innerHTML = new Date().getFullYear();

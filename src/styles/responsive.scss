@@ -1,8 +1,5 @@
 /** @format */
-
-// color palette
-$color__primary: #02475e;
-$color__secondary: #fefecc;
+@import "./main.scss";
 
 @media screen and (min-width: 768px) {
   // app-bar
@@ -48,8 +45,8 @@ $color__secondary: #fefecc;
     height: 400px;
   }
 
-  // restaurant list
-  .restaurant {
+  // restaurants
+  .restaurants {
     .restaurant__list {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -71,8 +68,8 @@ $color__secondary: #fefecc;
     height: 500px;
   }
 
-  // restaurant list
-  .restaurant {
+  // restaurants
+  .restaurants {
     .restaurant__list {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -80,8 +77,10 @@ $color__secondary: #fefecc;
 }
 
 @media screen and (min-width: 1200px) {
-  // restaurant list
-  .restaurant {
-    max-width: 1200px;
+  // restaurants
+  .restaurants {
+    .restaurant__list {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }

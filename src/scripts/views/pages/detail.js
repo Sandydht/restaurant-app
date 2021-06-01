@@ -20,7 +20,7 @@ const Detail = {
 
       content.innerHTML = `
         <section id="restaurant" class="restaurant">
-          <h2 class="restaurant__heading">Detail Page</h2>
+          <h2 class="restaurant__heading">Detail Cafe</h2>
           <div id="restaurantDetail" class="restaurant__body"></div>
         </section>
       `;

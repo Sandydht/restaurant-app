@@ -1,8 +1,7 @@
 /* eslint-disable linebreak-style */
 
-// import RestaurantDbSource from '../../data/restaurantdb-source';
+import RestaurantDbSource from '../../data/restaurantdb-source';
 import { createRestaurantItemTemplate } from '../templates/templates-creator';
-import DATA from '../../data/DATA.json';
 
 const Home = {
   async render() {
@@ -14,7 +13,8 @@ const Home = {
   async afterRender() {
     const content = document.getElementById('content');
     try {
-      const { restaurants } = DATA;
+      const restaurants = await RestaurantDbSource.restaurantsList();
+
       content.innerHTML = `
         <div class="hero">
           <div class="hero__text">

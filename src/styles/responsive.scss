@@ -1,5 +1,7 @@
 /** @format */
-@import "./main.scss";
+// color palette
+$color__primary: #02475e;
+$color__secondary: #fefecc;
 
 @media screen and (min-width: 768px) {
   // app-bar
@@ -50,9 +52,29 @@
   // restaurant
   .restaurant {
     .restaurant__body {
+      .restaurant__detail,
+      .restaurant__categories,
+      .restaurant__menu,
+      .restaurant__reviews {
+        width: 700px;
+      }
+
       .restaurant__detail {
         .restaurant-detail__heading {
-          height: 500px;
+          height: 400px;
+        }
+      }
+
+      .restaurant__reviews {
+        .add__reviews {
+          .actions {
+            display: flex;
+            justify-content: flex-end;
+
+            button {
+              width: unset;
+            }
+          }
         }
       }
     }
@@ -69,13 +91,6 @@
   .restaurants {
     .restaurants__list {
       grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  // restaurant
-  .restaurant {
-    .restaurant__body {
-      max-width: 700px;
     }
   }
 }

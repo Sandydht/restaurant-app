@@ -13,6 +13,10 @@ class RestaurantDbSource {
     const responseJson = await response.json();
     return responseJson.restaurant;
   }
+
+  static async restaurantCustomerReviews() {
+
+  }
 }
 
 export default RestaurantDbSource;

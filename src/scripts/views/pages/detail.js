@@ -4,8 +4,13 @@
 import UrlParser from '../../routes/url-parser';
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import {
-  createRestaurantDetailTemplate, createRestaurantCategoriesTemplate, createRestaurantFoodListTemplate, createRestaurantDrinkListTemplate, createRestaurantCustomerReviewsTemplate,
+  createRestaurantDetailTemplate,
+  createRestaurantCategoriesTemplate,
+  createRestaurantFoodListTemplate,
+  createRestaurantDrinkListTemplate,
+  createRestaurantCustomerReviewsTemplate,
 } from '../templates/templates-creator';
+import LikeButtonInitiator from '../../utils/like-button-initiator';
 
 const Detail = {
   async render() {
@@ -76,6 +81,8 @@ const Detail = {
             </div>
           </article>
         </section>
+
+        <div id="likeButtonContainer"></div>
       `;
 
       const restaurantDetail = document.getElementById('restaurantDetail');
@@ -99,6 +106,12 @@ const Detail = {
       const reviewList = document.getElementById('reviewList');
       restaurant.customerReviews.forEach((review) => {
         reviewList.innerHTML += createRestaurantCustomerReviewsTemplate(review);
+      });
+
+      const likeButtonContainer = document.getElementById('likeButtonContainer');
+      LikeButtonInitiator.init({
+        likeButtonContainer,
+        restaurant,
       });
     } catch (e) {
       content.innerHTML = `

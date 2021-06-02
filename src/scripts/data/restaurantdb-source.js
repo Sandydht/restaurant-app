@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 import API_ENDPOINT from '../globals/api-endpoint';
+import CONFIG from '../globals/config';
 
 class RestaurantDbSource {
   static async restaurantsList() {
@@ -14,8 +15,15 @@ class RestaurantDbSource {
     return responseJson.restaurant;
   }
 
-  static async restaurantCustomerReviews() {
-
+  static async restaurantCustomerReviews(reviews) {
+    fetch(API_ENDPOINT.ADD_CUSTOMER_REVIEW, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Auth-Token': CONFIG.API_KEY,
+      },
+      body: JSON.stringify(reviews),
+    });
   }
 }
 

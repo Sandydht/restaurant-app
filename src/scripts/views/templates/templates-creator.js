@@ -37,15 +37,37 @@ const createRestaurantDetailTemplate = (restaurant) => `
   </div>
 `;
 
-const createRestaurantCategoriesTemplate = (category) => `<li>${category.name}</li>`;
-const createRestaurantFoodListTemplate = (food) => `<li>${food.name}</li>`;
-const createRestaurantDrinkListTemplate = (drink) => `<li>${drink.name}</li>`;
+const createRestaurantCategoryItemTemplate = (category) => `
+  <li>${category.name}</li>
+`;
 
-const createRestaurantCustomerReviewsTemplate = (reviews) => `
+const createRestaurantFoodItemTemplate = (food) => `
+  <li>${food.name}</li>
+`;
+
+const createRestaurantDrinkItemTemplate = (drink) => `
+  <li>${drink.name}</li>
+`;
+
+const createRestaurantAddCustomerReviewTemplate = () => `
+  <div class="input__name">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" placeholder="Your name...">
+  </div>
+
+  <div class="input__review">
+    <label for="review">Review</label>
+    <textarea name="review" id="review" rows="5"  placeholder="Your review..."></textarea>
+  </div>
+
+  <button id="submitReview">Submit</button>
+`;
+
+const createRestaurantReviewItemTemplate = (customerReviews) => `
   <div class="review__item">
-    <p class="name">Name: ${reviews.name}</p>
-    <p class="date">Date: ${reviews.date}</p>
-    <p class="review">Review: ${reviews.review}</p>
+    <p class="name">Name: ${customerReviews.name}</p>
+    <p class="date">Date: ${customerReviews.date}</p>
+    <p class="review">Review: ${customerReviews.review}</p>
   </div>
 `;
 
@@ -64,10 +86,11 @@ const createLikedButtonTemplate = () => `
 export {
   createRestaurantItemTemplate,
   createRestaurantDetailTemplate,
-  createRestaurantCategoriesTemplate,
-  createRestaurantFoodListTemplate,
-  createRestaurantDrinkListTemplate,
-  createRestaurantCustomerReviewsTemplate,
+  createRestaurantCategoryItemTemplate,
+  createRestaurantFoodItemTemplate,
+  createRestaurantDrinkItemTemplate,
+  createRestaurantAddCustomerReviewTemplate,
+  createRestaurantReviewItemTemplate,
   createLikeButtonTemplate,
   createLikedButtonTemplate,
 };

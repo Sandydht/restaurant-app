@@ -14,22 +14,21 @@ import {
 } from '../templates/templates-creator';
 import AddCustomerReviewsInitiator from '../../utils/add-customer-reviews-initiator';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
+import '../component/spinner-loading';
 
 const Detail = {
   async render() {
-    return `
-      <div id="content" class="content"></div>
-    `;
+    return '<spinner-loading></spinner-loading>';
   },
 
   async afterRender() {
-    const content = document.getElementById('content');
+    const mainContent = document.getElementById('mainContent');
 
     try {
       const url = UrlParser.parseActiveUrlWithoutCombiner();
       const restaurant = await RestaurantDbSource.restaurantDetail(url.id);
 
-      content.innerHTML = `
+      mainContent.innerHTML = `
         <section id="restaurant" class="restaurant">
           <h2 class="restaurant__heading">Detail Cafe</h2>
 
@@ -82,7 +81,7 @@ const Detail = {
       this._renderRestaurantReviewList(restaurant);
       this._renderLikeButton(restaurant);
     } catch (e) {
-      content.innerHTML = `
+      mainContent.innerHTML = `
         <section>
           <h2>Gagal memuat data</h2>
         </section>

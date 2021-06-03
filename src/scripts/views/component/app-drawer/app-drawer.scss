@@ -1,0 +1,109 @@
+/** @format */
+
+// color palette
+$color__primary: #02475e;
+$color__secondary: #fefecc;
+$color__tertiary: red;
+
+app-drawer {
+  z-index: 1;
+  padding: 8px 10px;
+  background-color: $color__primary;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  position: sticky;
+  top: 0;
+  box-shadow: 2px 0 8px 0 rgba($color: #000000, $alpha: 0.3);
+
+  .app-bar__menu {
+    button {
+      display: flex;
+      min-width: 44px;
+      min-height: 44px;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      font-size: 12pt;
+      justify-content: center;
+      align-items: center;
+      color: $color__secondary;
+    }
+  }
+
+  .app-bar__brand {
+    h1 {
+      font-style: italic;
+      font-size: 18pt;
+      color: $color__secondary;
+    }
+  }
+
+  .app-bar__nav {
+    position: fixed;
+    top: 0;
+    width: 200px;
+    left: -1000px;
+    height: 100%;
+    background-color: $color__secondary;
+    box-shadow: 0 2px 8px 0 rgba($color: #000000, $alpha: 0.3);
+    transition: all 0.3s;
+    padding: 20px;
+
+    .nav__item {
+      list-style: none;
+
+      a {
+        text-decoration: none;
+        display: flex;
+        min-width: 44px;
+        min-height: 44px;
+        cursor: pointer;
+        color: $color__primary;
+        align-items: center;
+      }
+
+      a:hover {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .app-bar__nav.open {
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  app-drawer {
+    grid-template-columns: 1fr auto;
+    padding: 10px 20px;
+
+    .app-bar__menu {
+      display: none;
+    }
+
+    .app-bar__nav {
+      position: unset;
+      top: 0;
+      width: 100%;
+      background-color: unset;
+      box-shadow: unset;
+      transition: unset;
+      padding: unset;
+
+      .nav__item {
+        display: inline-flex;
+        width: 120px;
+        justify-content: center;
+        align-items: center;
+
+        a {
+          justify-content: center;
+          font-size: 14pt;
+          color: $color__secondary;
+        }
+      }
+    }
+  }
+}

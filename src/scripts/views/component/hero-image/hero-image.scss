@@ -1,0 +1,40 @@
+/** @format */
+
+hero-image {
+  background-image: linear-gradient(
+      rgba($color: #000000, $alpha: 0.5),
+      rgba($color: #000000, $alpha: 0.5)
+    ),
+    url("/images/heros/hero-image_2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 350px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: 18pt;
+  line-height: 1.5em;
+
+  .hero__text {
+    text-align: center;
+    color: white;
+
+    .hero__brand {
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  hero-image {
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  hero-image {
+    height: 500px;
+  }
+}

@@ -13,51 +13,6 @@ $color__secondary: #fefecc;
 }
 
 @media screen and (min-width: 768px) {
-  // app-bar
-  .app-bar {
-    grid-template-columns: 1fr auto;
-    padding: 10px 20px;
-
-    .app-bar__menu {
-      display: none;
-    }
-
-    .app-bar__nav {
-      position: unset;
-      top: 0;
-      width: 100%;
-      background-color: unset;
-      box-shadow: unset;
-      transition: unset;
-      padding: unset;
-
-      .nav__item {
-        display: inline-flex;
-        width: 120px;
-        justify-content: center;
-        align-items: center;
-
-        a {
-          justify-content: center;
-          font-size: 14pt;
-          color: $color__secondary;
-        }
-      }
-    }
-  }
-
-  // hero
-  .hero {
-    height: 400px;
-  }
-
-  // restaurants
-  .restaurants {
-    .restaurants__list {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
   // restaurant
   .restaurant {
     justify-content: center;
@@ -71,29 +26,6 @@ $color__secondary: #fefecc;
   .restaurant__detail {
     .restaurant-detail__heading {
       height: 500px;
-    }
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  // hero
-  .hero {
-    height: 500px;
-  }
-
-  // restaurants
-  .restaurants {
-    .restaurants__list {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  // restaurants
-  .restaurants {
-    .restaurants__list {
-      grid-template-columns: repeat(4, 1fr);
     }
   }
 }

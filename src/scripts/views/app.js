@@ -1,25 +1,12 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-underscore-dangle */
 
-import DrawerInitiator from '../utils/drawer-initiator';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
 
 class App {
-  constructor({ button, drawer, content }) {
-    this._button = button;
-    this._drawer = drawer;
+  constructor({ content }) {
     this._content = content;
-
-    this._initialAppShell();
-  }
-
-  _initialAppShell() {
-    DrawerInitiator.init({
-      button: this._button,
-      drawer: this._drawer,
-      content: document.body,
-    });
   }
 
   async renderPage() {

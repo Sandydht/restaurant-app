@@ -4,15 +4,13 @@ import 'regenerator-runtime';
 import '../styles/main.scss';
 import '../styles/responsive.scss';
 import App from './views/app';
-import swRegister from './utils/sw-register';
+// import swRegister from './utils/sw-register';
+import './views/component/app-drawer';
+import './views/component/footer-component';
 
-const menuButton = document.getElementById('menuButton');
-const navElement = document.getElementById('navElement');
 const mainContent = document.getElementById('mainContent');
 
 const app = new App({
-  button: menuButton,
-  drawer: navElement,
   content: mainContent,
 });
 
@@ -22,8 +20,5 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
-  swRegister();
+  // swRegister();
 });
-
-const footerYear = document.getElementById('footerYear');
-footerYear.innerHTML = new Date().getFullYear();

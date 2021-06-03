@@ -1,0 +1,21 @@
+/** @format */
+
+// color palette
+$color__primary: #02475e;
+$color__secondary: #fefecc;
+
+footer-component {
+  footer {
+    padding: 10px;
+    text-align: center;
+    font-size: 14pt;
+    box-shadow: 2px 0 8px 0 rgba($color: #000000, $alpha: 0.3);
+    background-color: $color__primary;
+    color: $color__secondary;
+
+    .footer__brand {
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+}

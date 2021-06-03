@@ -1,45 +1,42 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-underscore-dangle */
 
 import RestaurantDbSource from '../../data/restaurantdb-source';
-import { createRestaurantItemTemplate } from '../templates/templates-creator';
+
+import '../component/hero-image';
+import '../component/restaurant-list';
+import '../component/spinner-loading';
 
 const Home = {
   async render() {
-    return `
-      <div id="content"></div>
-    `;
+    return '<spinner-loading></spinner-loading>';
   },
 
   async afterRender() {
-    const content = document.getElementById('content');
+    const mainContent = document.getElementById('mainContent');
     try {
       const restaurants = await RestaurantDbSource.restaurantsList();
-
-      content.innerHTML = `
-        <div class="hero">
-          <div class="hero__text">
-            <p>Welcome to <span class="hero__brand">Cafetaria</span></p>
-            <p>Have a nice day</p>
-          </div>
-        </div>
-
+      mainContent.innerHTML = `
+        <hero-image></hero-image>
         <section id="restaurants" class="restaurants">
           <h2 class="restaurants__heading">Explore Cafe</h2>
-          <div id="restaurantsList" class="restaurants__list"></div>
+          <restaurant-list></restaurant-list>
         </section>
       `;
 
-      const restaurantsList = document.getElementById('restaurantsList');
-      restaurants.forEach((restaurant) => {
-        restaurantsList.innerHTML += createRestaurantItemTemplate(restaurant);
-      });
+      this._renderRestaurantList(restaurants);
     } catch (e) {
-      content.innerHTML = `
+      mainContent.innerHTML = `
         <section>
           <h2>Gagal memuat data</h2>
         </section>
       `;
     }
+  },
+
+  _renderRestaurantList(restaurants) {
+    const restaurantList = document.querySelector('restaurant-list');
+    restaurantList.restaurants = restaurants;
   },
 };
 

@@ -1,0 +1,73 @@
+/** @format */
+// color palette
+$color__primary: #02475e;
+$color__secondary: #fefecc;
+
+restaurant-item {
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-size: 12pt;
+
+  .heading {
+    position: relative;
+    height: 200px;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      height: 100%;
+    }
+
+    .city {
+      position: absolute;
+      top: 20px;
+      padding: 10px 20px;
+      background-color: black;
+      color: white;
+    }
+  }
+
+  .body {
+    padding: 20px 20px 0 20px;
+    display: grid;
+    gap: 5px;
+
+    .rating,
+    .name {
+      font-weight: bold;
+    }
+
+    .name {
+      font-size: 14pt;
+    }
+
+    .description {
+      display: -webkit-box;
+      -webkit-line-clamp: 10;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.5em;
+    }
+  }
+
+  .actions {
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      text-decoration: none;
+      color: $color__primary;
+      margin-left: 30px;
+      margin-bottom: 10px;
+      font-size: 14pt;
+    }
+
+    a:hover {
+      font-weight: bold;
+    }
+  }
+}

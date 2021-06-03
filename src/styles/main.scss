@@ -44,191 +44,14 @@ body {
   top: 100px;
 }
 
-// app-bar
-.app-bar {
-  z-index: 1;
-  padding: 8px 10px;
-  background-color: $color__primary;
-  display: grid;
-  align-items: center;
-  grid-template-columns: auto 1fr;
-  position: sticky;
-  top: 0;
-  box-shadow: 2px 0 8px 0 rgba($color: #000000, $alpha: 0.3);
-
-  .app-bar__menu {
-    button {
-      display: flex;
-      min-width: 44px;
-      min-height: 44px;
-      cursor: pointer;
-      border: none;
-      background-color: transparent;
-      font-size: 12pt;
-      justify-content: center;
-      align-items: center;
-      color: $color__secondary;
-    }
-  }
-
-  .app-bar__brand {
-    h1 {
-      font-style: italic;
-      font-size: 18pt;
-      color: $color__secondary;
-    }
-  }
-
-  .app-bar__nav {
-    position: fixed;
-    top: 0;
-    width: 200px;
-    left: -1000px;
-    height: 100%;
-    background-color: $color__secondary;
-    box-shadow: 0 2px 8px 0 rgba($color: #000000, $alpha: 0.3);
-    transition: all 0.3s;
-    padding: 20px;
-
-    .nav__item {
-      list-style: none;
-
-      a {
-        text-decoration: none;
-        display: flex;
-        min-width: 44px;
-        min-height: 44px;
-        cursor: pointer;
-        color: $color__primary;
-        align-items: center;
-      }
-
-      a:hover {
-        font-weight: bold;
-      }
-    }
-  }
-
-  .app-bar__nav.open {
-    left: 0;
-  }
-}
-
-// hero
-.hero {
-  background-image: linear-gradient(
-      rgba($color: #000000, $alpha: 0.5),
-      rgba($color: #000000, $alpha: 0.5)
-    ),
-    url("/images/heros/hero-image_2.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 350px;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  font-size: 18pt;
-  line-height: 1.5em;
-
-  .hero__text {
-    text-align: center;
-    color: white;
-
-    .hero__brand {
-      font-weight: bold;
-      font-style: italic;
-    }
-  }
-}
-
 // restaurants
 .restaurants {
   padding: 20px;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 20px;
 
   .restaurants__heading {
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 10px;
-  }
-
-  .restaurants__list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
-// restaurant item
-.restaurant__item {
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  font-size: 12pt;
-
-  .restaurant-item__heading {
-    position: relative;
-    height: 200px;
-
-    img {
-      width: 100%;
-      object-fit: cover;
-      object-position: center;
-      height: 100%;
-    }
-
-    .city {
-      position: absolute;
-      top: 20px;
-      padding: 10px 20px;
-      background-color: black;
-      color: white;
-    }
-  }
-
-  .restaurant-item__body {
-    padding: 20px 20px 0 20px;
-    display: grid;
-    gap: 5px;
-
-    .rating,
-    .name {
-      font-weight: bold;
-    }
-
-    .name {
-      font-size: 14pt;
-    }
-
-    .description {
-      display: -webkit-box;
-      -webkit-line-clamp: 10;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      line-height: 1.5em;
-    }
-  }
-
-  .restaurant-item__actions {
-    a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 44px;
-      min-height: 44px;
-      text-decoration: none;
-      color: $color__primary;
-      margin-left: 30px;
-      margin-bottom: 10px;
-      font-size: 14pt;
-    }
-
-    a:hover {
-      font-weight: bold;
-    }
+    margin-top: 10px;
+    margin-bottom: 30px;
   }
 }
 
@@ -359,6 +182,18 @@ body {
         padding: 10px;
         font-size: 12pt;
         border-radius: 5px;
+        border: 1px solid #dddddd;
+        outline: none;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+      }
+
+      input:hover,
+      input:focus {
+        border: 1px solid $color__primary;
+        box-shadow: 0 0 5px $color__primary;
       }
     }
 
@@ -374,6 +209,18 @@ body {
         padding: 10px;
         font-size: 12pt;
         border-radius: 5px;
+        border: 1px solid #dddddd;
+        outline: none;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+      }
+
+      textarea:hover,
+      textarea:focus {
+        border: 1px solid $color__primary;
+        box-shadow: 0 0 5px $color__primary;
       }
     }
 
@@ -442,19 +289,4 @@ body {
 .like:hover,
 .like:focus {
   background-color: rgb(199, 4, 4);
-}
-
-// footer
-.footer {
-  padding: 10px;
-  text-align: center;
-  font-size: 14pt;
-  box-shadow: 2px 0 8px 0 rgba($color: #000000, $alpha: 0.3);
-  background-color: $color__primary;
-  color: $color__secondary;
-
-  .footer__brand {
-    font-weight: bold;
-    font-style: italic;
-  }
 }

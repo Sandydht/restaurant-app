@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 
 import UrlParser from '../../routes/url-parser';
@@ -64,16 +66,16 @@ const Detail = {
 
                   <div class="name">
                     <label for="name">Name</label> <br>
-                    <input type="text" name="name" placeholder="Your name...">
+                    <input type="text" name="name" id="name" placeholder="Your name...">
                   </div>
 
                   <div class="review">
                     <label for="review">Review</label> <br>
-                    <textarea name="review" rows="6" placeholder="Your review..."></textarea>
+                    <textarea name="review" rows="6" id="review" placeholder="Your review..."></textarea>
                   </div>
 
                   <div class="actions">
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="buttonSubmit">Submit</button>
                   </div>
               </div>  
 
@@ -83,36 +85,16 @@ const Detail = {
         </section>
 
         <div id="likeButtonContainer"></div>
+        <div id="snackbar" class="snackbar"></div>
       `;
 
-      const restaurantDetail = document.getElementById('restaurantDetail');
-      restaurantDetail.innerHTML = createRestaurantDetailTemplate(restaurant);
-
-      const categoryList = document.getElementById('categoryList');
-      restaurant.categories.forEach((category) => {
-        categoryList.innerHTML += createRestaurantCategoriesTemplate(category);
-      });
-
-      const foodList = document.getElementById('foodList');
-      restaurant.menus.foods.forEach((food) => {
-        foodList.innerHTML += createRestaurantFoodListTemplate(food);
-      });
-
-      const drinkList = document.getElementById('drinkList');
-      restaurant.menus.drinks.forEach((drink) => {
-        drinkList.innerHTML += createRestaurantDrinkListTemplate(drink);
-      });
-
-      const reviewList = document.getElementById('reviewList');
-      restaurant.customerReviews.forEach((review) => {
-        reviewList.innerHTML += createRestaurantCustomerReviewsTemplate(review);
-      });
-
-      const likeButtonContainer = document.getElementById('likeButtonContainer');
-      LikeButtonInitiator.init({
-        likeButtonContainer,
-        restaurant,
-      });
+      this._renderRestaurantDetail(restaurant);
+      this._renderRestaurantCategories(restaurant);
+      this._renderRestaurantFoodList(restaurant);
+      this._renderRestaurantDrinkList(restaurant);
+      this._restaurantAddCustomerReviews(restaurant);
+      this._renderRestaurantReviewList(restaurant);
+      this._renderLikeButton(restaurant);
     } catch (e) {
       content.innerHTML = `
         <section>
@@ -120,6 +102,88 @@ const Detail = {
         </section>
       `;
     }
+  },
+
+  _renderRestaurantDetail(restaurant) {
+    const restaurantDetail = document.getElementById('restaurantDetail');
+    restaurantDetail.innerHTML = createRestaurantDetailTemplate(restaurant);
+  },
+
+  _renderRestaurantCategories(restaurant) {
+    const categoryList = document.getElementById('categoryList');
+    restaurant.categories.forEach((category) => {
+      categoryList.innerHTML += createRestaurantCategoriesTemplate(category);
+    });
+  },
+
+  _renderRestaurantFoodList(restaurant) {
+    const foodList = document.getElementById('foodList');
+    restaurant.menus.foods.forEach((food) => {
+      foodList.innerHTML += createRestaurantFoodListTemplate(food);
+    });
+  },
+
+  _renderRestaurantDrinkList(restaurant) {
+    const drinkList = document.getElementById('drinkList');
+    restaurant.menus.drinks.forEach((drink) => {
+      drinkList.innerHTML += createRestaurantDrinkListTemplate(drink);
+    });
+  },
+
+  _restaurantAddCustomerReviews(restaurant) {
+    const { id } = restaurant;
+    const inputName = document.getElementById('name');
+    const inputReview = document.getElementById('review');
+    const buttonSubmit = document.getElementById('buttonSubmit');
+
+    buttonSubmit.addEventListener('click', async () => {
+      buttonSubmit.disabled = true;
+      buttonSubmit.classList.toggle('loading');
+      buttonSubmit.innerHTML = '<i class="fa fa-spinner fa-spin"></i>';
+      const reviews = {
+        id,
+        name: inputName.value,
+        review: inputReview.value,
+      };
+
+      const responseReviews = await RestaurantDbSource.restaurantAddCustomerReviews(reviews);
+      if (responseReviews.error) {
+        this._showResponseMessage('Add review failed');
+      } else {
+        inputName.value = '';
+        inputReview.value = '';
+        buttonSubmit.disabled = false;
+        buttonSubmit.classList.remove('loading');
+        buttonSubmit.innerHTML = 'Submit';
+        this._showResponseMessage('Add review success');
+        this._renderRestaurantReviewList(responseReviews);
+      }
+    });
+  },
+
+  _renderRestaurantReviewList(restaurant) {
+    const reviewList = document.getElementById('reviewList');
+    reviewList.innerHTML = '';
+    restaurant.customerReviews.forEach((customerReview) => {
+      reviewList.innerHTML += createRestaurantCustomerReviewsTemplate(customerReview);
+    });
+  },
+
+  _renderLikeButton(restaurant) {
+    const likeButtonContainer = document.getElementById('likeButtonContainer');
+    LikeButtonInitiator.init({
+      likeButtonContainer,
+      restaurant,
+    });
+  },
+
+  _showResponseMessage(message = '') {
+    const snackbar = document.getElementById('snackbar');
+    snackbar.innerHTML = message;
+    snackbar.classList.toggle('show');
+    setTimeout(() => {
+      snackbar.classList.remove('show');
+    }, 3000);
   },
 };
 

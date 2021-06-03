@@ -74,6 +74,11 @@ $color__secondary: #fefecc;
             button {
               width: unset;
             }
+
+            button.loading {
+              width: 109.797px;
+              cursor: no-drop;
+            }
           }
         }
       }

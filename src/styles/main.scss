@@ -22,6 +22,48 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+// snackbar
+.snackbar {
+  visibility: hidden;
+  background-color: #02475e;
+  color: #fefecc;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px 20px;
+  position: fixed;
+  z-index: 1;
+  left: 20px;
+  bottom: 20px;
+  font-size: 12pt;
+}
+
+.snackbar.show {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {
+    left: 0;
+    opacity: 0;
+  }
+  to {
+    left: 20px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    left: 20px;
+    opacity: 1;
+  }
+  to {
+    left: 0;
+    opacity: 0;
+  }
+}
+
 // skip link
 .skip__link {
   z-index: 1000;
@@ -337,9 +379,14 @@ body {
             width: 100%;
           }
 
+          button.loading {
+            width: 100%;
+            cursor: no-drop;
+          }
+
           button:hover,
           button:focus {
-            opacity: 0.9;
+            background-color: #032835;
           }
         }
 
@@ -394,8 +441,8 @@ body {
 .like {
   font-size: 18px;
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: 20px;
+  right: 20px;
   background-color: $color__primary;
   color: $color__secondary;
   border: 0;
@@ -406,6 +453,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.like:hover,
+.like:focus {
+  background-color: #032835;
 }
 
 // footer

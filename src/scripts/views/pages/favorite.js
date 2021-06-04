@@ -1,48 +1,51 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-underscore-dangle */
 
 import FavoriteRestaurantIdb from '../../data/restaurantidb-source';
-import { createRestaurantItemTemplate } from '../templates/templates-creator';
+import '../component/spinner-loading';
+import '../component/restaurant-list';
 
 const Favorite = {
   async render() {
-    return `
-      <div id="content"></div>
-    `;
+    return '<spinner-loading></spinner-loading>';
   },
 
   async afterRender() {
-    const content = document.getElementById('content');
+    const mainContent = document.getElementById('mainContent');
 
     try {
       const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
 
-      content.innerHTML = `
+      mainContent.innerHTML = `
         <section class="restaurants">
           <h2 class="restaurants__heading">Favorite Cafe</h2>
-          <div id="restaurantsList" class="restaurants__list"></div>
+          <div class="restaurants__body">
+            <restaurant-list></restaurant-list>
+          </div>
         </section>
       `;
 
-      const restaurantsList = document.getElementById('restaurantsList');
-
-      if (restaurants.length === 0) {
-        restaurantsList.innerHTML = `
+      if (restaurants.length > 0) {
+        this._renderFavoriteRestaurantList(restaurants);
+      } else {
+        mainContent.innerHTML = `
           <section>
             <h2>No data to display</h2>
           </section>
         `;
-      } else {
-        restaurants.forEach((restaurant) => {
-          restaurantsList.innerHTML += createRestaurantItemTemplate(restaurant);
-        });
       }
     } catch (e) {
-      content.innerHTML = `
+      mainContent.innerHTML = `
         <section>
           <h2>Gagal memuat data</h2>
         </section>
       `;
     }
+  },
+
+  _renderFavoriteRestaurantList(restaurants) {
+    const restaurantList = document.querySelector('restaurant-list');
+    restaurantList.restaurants = restaurants;
   },
 };
 

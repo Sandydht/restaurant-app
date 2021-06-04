@@ -8,6 +8,7 @@ import '../component/restaurant-categories';
 import '../component/restaurant-menus';
 import '../component/customer-reviews';
 import '../component/review-list';
+import '../component/favorite-button';
 
 const Detail = {
   async render() {
@@ -35,8 +36,7 @@ const Detail = {
             <review-list></review-list>
           </div>
         </section>
-
-        <div id="likeButtonContainer"></div>
+        <favorite-button></favorite-button>
       `;
 
       this._renderRestaurantDetail(restaurant);
@@ -92,6 +92,10 @@ const Detail = {
   _renderRestaurantReviewList(restaurant) {
     const reviewList = document.querySelector('review-list');
     reviewList.restaurant = restaurant;
+  },
+
+  _likeRestaurant() {
+
   },
 };
 

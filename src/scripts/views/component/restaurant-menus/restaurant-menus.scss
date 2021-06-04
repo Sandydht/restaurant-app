@@ -1,0 +1,43 @@
+/** @format */
+
+restaurant-menus {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+
+  .foods {
+    display: grid;
+    gap: 10px;
+    grid-template-rows: auto 1fr;
+
+    .foods__heading {
+      font-weight: bold;
+      font-size: 14pt;
+    }
+
+    .foods__body {
+      margin-left: 20px;
+    }
+  }
+
+  .drinks {
+    display: grid;
+    gap: 10px;
+    grid-template-rows: auto 1fr;
+
+    .drinks__heading {
+      font-weight: bold;
+      font-size: 14pt;
+    }
+
+    .drinks__body {
+      margin-left: 20px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  restaurant-menus {
+    width: 700px;
+  }
+}

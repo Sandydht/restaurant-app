@@ -20,7 +20,9 @@ const Home = {
         <hero-image></hero-image>
         <section id="restaurants" class="restaurants">
           <h2 class="restaurants__heading">Explore Cafe</h2>
-          <restaurant-list></restaurant-list>
+          <div class="restaurants__body">
+            <restaurant-list></restaurant-list>
+          </div>
         </section>
       `;
 

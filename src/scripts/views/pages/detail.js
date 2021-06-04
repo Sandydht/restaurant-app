@@ -1,20 +1,13 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable max-len */
-
 import UrlParser from '../../routes/url-parser';
 import RestaurantDbSource from '../../data/restaurantdb-source';
-import {
-  createRestaurantCategoryItemTemplate,
-  createRestaurantDetailTemplate,
-  createRestaurantDrinkItemTemplate,
-  createRestaurantFoodItemTemplate,
-  createRestaurantReviewItemTemplate,
-} from '../templates/templates-creator';
-import AddCustomerReviewsInitiator from '../../utils/add-customer-reviews-initiator';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
 import '../component/spinner-loading';
+import '../component/restaurant-detail';
+import '../component/restaurant-categories';
+import '../component/restaurant-menus';
+import '../component/customer-reviews';
+import '../component/review-list';
 
 const Detail = {
   async render() {
@@ -31,55 +24,26 @@ const Detail = {
       mainContent.innerHTML = `
         <section id="restaurant" class="restaurant">
           <h2 class="restaurant__heading">Detail Cafe</h2>
-
-          <article class="restaurant__body">
-            <div id="restaurantDetail" class="restaurant__detail"></div>
-
+          <div class="restaurant__body">
+            <restaurant-detail></restaurant-detail>
             <hr>
-
-            <div id="restaurantCategories" class="restaurant__categories">
-              <p>Categories</p>
-              <ul id="categoryList"></ul>
-            </div>
-
+            <restaurant-categories></restaurant-categories>
             <hr>
-
-            <div id="restaurantMenus" class="restaurant__menus">
-              <div class="restaurant-menus__body">
-                <div class="food__list">
-                  <p>Foods</p>
-                  <ul id="foodList"></ul>
-                </div>
-                  
-                <div class="drink__list">
-                  <p>Drinks</p>
-                  <ul id="drinkList"></ul>
-                </div>
-              </div>
-            </div>
-
+            <restaurant-menus></restaurant-menus>
             <hr>
-
-            <div class="add__customer__reviews">
-              <p>Add Customer Reviews</p>
-
-              <div id="addCustomerReviews" class="add-customer-reviews__body"></div>
-            </div>
-
-            <div id="reviewList" class="review__list"></div>
-          </article>
+            <customer-reviews></customer-reviews>
+            <review-list></review-list>
+          </div>
         </section>
 
         <div id="likeButtonContainer"></div>
       `;
 
       this._renderRestaurantDetail(restaurant);
-      this._renderRestaurantCategoryList(restaurant);
-      this._renderRestaurantFoodList(restaurant);
-      this._renderRestaurantDrinkList(restaurant);
-      this._renderRestaurantAddCustomerReviews(restaurant);
+      this._renderRestaurantCategories(restaurant);
+      this._renderRestaurantMenus(restaurant);
+      this._addCustomerReviews(restaurant);
       this._renderRestaurantReviewList(restaurant);
-      this._renderLikeButton(restaurant);
     } catch (e) {
       mainContent.innerHTML = `
         <section>
@@ -90,56 +54,44 @@ const Detail = {
   },
 
   _renderRestaurantDetail(restaurant) {
-    const restaurantDetail = document.getElementById('restaurantDetail');
-    restaurantDetail.innerHTML = createRestaurantDetailTemplate(restaurant);
+    const restaurantDetail = document.querySelector('restaurant-detail');
+    restaurantDetail.restaurant = restaurant;
   },
 
-  _renderRestaurantCategoryList(restaurant) {
-    const categoryList = document.getElementById('categoryList');
-    restaurant.categories.forEach((category) => {
-      categoryList.innerHTML += createRestaurantCategoryItemTemplate(category);
-    });
+  _renderRestaurantCategories(restaurant) {
+    const restaurantCategories = document.querySelector('restaurant-categories');
+    restaurantCategories.restaurant = restaurant;
   },
 
-  _renderRestaurantFoodList(restaurant) {
-    const foodList = document.getElementById('foodList');
-    restaurant.menus.foods.forEach((food) => {
-      foodList.innerHTML += createRestaurantFoodItemTemplate(food);
-    });
+  _renderRestaurantMenus(restaurant) {
+    const restaurantMenus = document.querySelector('restaurant-menus');
+    restaurantMenus.restaurant = restaurant;
   },
 
-  _renderRestaurantDrinkList(restaurant) {
-    const drinkList = document.getElementById('drinkList');
-    restaurant.menus.drinks.forEach((drink) => {
-      drinkList.innerHTML += createRestaurantDrinkItemTemplate(drink);
-    });
-  },
+  _addCustomerReviews(restaurant) {
+    const customerReviews = document.querySelector('customer-reviews');
 
-  _renderRestaurantAddCustomerReviews(restaurant) {
-    const addCustomerReviewsContainer = document.getElementById('addCustomerReviews');
-    const reviewList = document.getElementById('reviewList');
+    customerReviews.clickEvent = async () => {
+      const { id } = restaurant;
+      const inputName = customerReviews.valueName;
+      const inputReview = customerReviews.valueReview;
 
-    AddCustomerReviewsInitiator.init({
-      addCustomerReviewsContainer,
-      id: restaurant.id,
-      reviewListContainer: reviewList,
-    });
+      customerReviews.clickTrigger = true;
+
+      const responseReview = await RestaurantDbSource.restaurantAddCustomerReviews({
+        id,
+        name: inputName,
+        review: inputReview,
+      });
+
+      customerReviews.clickTrigger = false;
+      this._renderRestaurantReviewList(responseReview);
+    };
   },
 
   _renderRestaurantReviewList(restaurant) {
-    const reviewList = document.getElementById('reviewList');
-    reviewList.innerHTML = '';
-    restaurant.customerReviews.forEach((customerReview) => {
-      reviewList.innerHTML += createRestaurantReviewItemTemplate(customerReview);
-    });
-  },
-
-  _renderLikeButton(restaurant) {
-    const likeButtonContainer = document.getElementById('likeButtonContainer');
-    LikeButtonInitiator.init({
-      likeButtonContainer,
-      restaurant,
-    });
+    const reviewList = document.querySelector('review-list');
+    reviewList.restaurant = restaurant;
   },
 };
 

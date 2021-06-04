@@ -1,0 +1,25 @@
+/** @format */
+
+review-item {
+  display: grid;
+  gap: 10px;
+  grid-template-rows: auto 1fr;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+
+  .heading {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    .name {
+      font-weight: bold;
+      font-size: 14pt;
+    }
+
+    .date {
+      font-size: 12pt;
+      color: #5e5e5e;
+    }
+  }
+}

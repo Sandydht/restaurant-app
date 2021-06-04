@@ -1,34 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable max-len */
 
-import CONFIG from '../../globals/config';
-
-const createRestaurantDetailTemplate = (restaurant) => `
-  <div class="restaurant-detail__heading">
-    <img src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}">
-    <p class="city">${restaurant.city}</p>
-  </div>
-
-  <div class="restaurant-detail__body">
-    <p class="rating">Rating: ${restaurant.rating}</p>
-    <p class="name">${restaurant.name}</p>
-    <p class="address">Address: ${restaurant.address}</p>
-    <p class="description">${restaurant.description}</p>
-  </div>
-`;
-
-const createRestaurantCategoryItemTemplate = (category) => `
-  <li>${category.name}</li>
-`;
-
-const createRestaurantFoodItemTemplate = (food) => `
-  <li>${food.name}</li>
-`;
-
-const createRestaurantDrinkItemTemplate = (drink) => `
-  <li>${drink.name}</li>
-`;
-
 const createRestaurantAddCustomerReviewTemplate = () => `
   <div class="input__name">
     <label for="name">Name</label>
@@ -64,10 +36,6 @@ const createLikedButtonTemplate = () => `
 `;
 
 export {
-  createRestaurantDetailTemplate,
-  createRestaurantCategoryItemTemplate,
-  createRestaurantFoodItemTemplate,
-  createRestaurantDrinkItemTemplate,
   createRestaurantAddCustomerReviewTemplate,
   createRestaurantReviewItemTemplate,
   createLikeButtonTemplate,

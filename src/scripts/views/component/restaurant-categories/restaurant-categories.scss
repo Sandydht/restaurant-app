@@ -1,0 +1,21 @@
+/** @format */
+
+restaurant-categories {
+  display: grid;
+  gap: 10px;
+
+  .heading {
+    font-weight: bold;
+    font-size: 14pt;
+  }
+
+  .body {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  restaurant-categories {
+    width: 700px;
+  }
+}

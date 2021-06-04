@@ -46,226 +46,37 @@ body {
 
 // restaurants
 .restaurants {
-  padding: 20px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+  margin-top: 50px;
 
   .restaurants__heading {
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 30px;
+  }
+
+  .restaurants__body {
+    padding: 20px;
   }
 }
 
 // restaurant
 .restaurant {
   display: grid;
-  padding: 20px;
   grid-template-rows: auto 1fr;
   gap: 20px;
+  margin-top: 50px;
 
   .restaurant__heading {
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 10px;
   }
 
   .restaurant__body {
+    padding: 20px;
     display: grid;
+    justify-content: center;
     gap: 20px;
   }
-}
-
-// restaurant detail
-.restaurant__detail {
-  font-size: 12pt;
-  display: grid;
-  gap: 10px;
-
-  .restaurant-detail__heading {
-    position: relative;
-    height: 200px;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .city {
-      position: absolute;
-      top: 20px;
-      padding: 10px 20px;
-      background-color: black;
-      color: white;
-    }
-  }
-
-  .restaurant-detail__body {
-    display: grid;
-    gap: 10px;
-
-    .rating,
-    .name,
-    .address {
-      font-weight: bold;
-    }
-
-    .name {
-      font-size: 14pt;
-    }
-
-    .description {
-      line-height: 1.5em;
-    }
-  }
-}
-
-// restaurant categories
-.restaurant__categories {
-  p {
-    font-size: 14pt;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  ul {
-    margin-left: 20px;
-  }
-}
-
-// restaurant menus
-.restaurant__menus {
-  p {
-    font-size: 14pt;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  ul {
-    margin-left: 20px;
-    font-size: 12pt;
-  }
-
-  .restaurant-menus__body {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-// add customer reviews
-.add__customer__reviews {
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 10px;
-
-  p {
-    font-size: 14pt;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  .add-customer-reviews__body {
-    display: grid;
-    gap: 10px;
-
-    .input__name {
-      display: grid;
-      gap: 5px;
-
-      input {
-        width: 100%;
-        display: inline-flex;
-        min-width: 44px;
-        min-height: 44px;
-        padding: 10px;
-        font-size: 12pt;
-        border-radius: 5px;
-        border: 1px solid #dddddd;
-        outline: none;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -ms-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-      }
-
-      input:hover,
-      input:focus {
-        border: 1px solid $color__primary;
-        box-shadow: 0 0 5px $color__primary;
-      }
-    }
-
-    .input__review {
-      display: grid;
-      gap: 5px;
-
-      textarea {
-        width: 100%;
-        display: inline-flex;
-        min-width: 44px;
-        min-height: 44px;
-        padding: 10px;
-        font-size: 12pt;
-        border-radius: 5px;
-        border: 1px solid #dddddd;
-        outline: none;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -ms-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-      }
-
-      textarea:hover,
-      textarea:focus {
-        border: 1px solid $color__primary;
-        box-shadow: 0 0 5px $color__primary;
-      }
-    }
-
-    button {
-      display: inline-flex;
-      min-width: 44px;
-      min-height: 44px;
-      align-items: center;
-      justify-content: center;
-      font-size: 12pt;
-      text-transform: uppercase;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-      background-color: $color__primary;
-      color: $color__secondary;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    button.loading {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    button:hover,
-    button:focus {
-      background-color: #023546;
-    }
-  }
-}
-
-// review list
-.review__list {
-  display: grid;
-  gap: 10px;
-}
-
-// review item
-.review__item {
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  font-size: 12pt;
-  line-height: 1.5em;
 }
 
 // like

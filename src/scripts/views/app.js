@@ -3,6 +3,7 @@
 
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
+import './component/not-found';
 
 class App {
   constructor({ content }) {
@@ -17,11 +18,9 @@ class App {
       this._content.innerHTML = await page.render();
       await page.afterRender();
     } catch (e) {
-      this._content.innerHTML = `
-        <section>
-          <h2>Halaman tidak ditemukan</h2>
-        </section>
-      `;
+      this._content.innerHTML = '<not-found></not-found>';
+      const notFound = document.querySelector('not-found');
+      notFound.message = 'Page not found';
     }
   }
 }

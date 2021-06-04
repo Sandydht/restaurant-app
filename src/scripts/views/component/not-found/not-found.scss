@@ -1,0 +1,14 @@
+/** @format */
+
+not-found {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  min-height: 100%;
+
+  p {
+    font-weight: bold;
+    font-size: 14pt;
+  }
+}

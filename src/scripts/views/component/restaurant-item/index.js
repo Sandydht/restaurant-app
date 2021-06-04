@@ -25,7 +25,7 @@ class RestaurantItem extends HTMLElement {
       </div>
 
       <div class="actions">
-        <a href="#/detail/${this._restaurant.id}">See detail</a>
+        <a aria-label="see detail ${this._restaurant.name}" href="#/detail/${this._restaurant.id}">See detail</a>
       </div>
     `;
   }

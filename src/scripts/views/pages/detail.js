@@ -2,13 +2,17 @@
 /* eslint-disable no-underscore-dangle */
 import UrlParser from '../../routes/url-parser';
 import RestaurantDbSource from '../../data/restaurantdb-source';
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
+import LikeButtonInitiator from '../../utils/like-button-initiator';
+import CustomerReviewsInitiator from '../../utils/customer-reviews-initiator';
 import '../component/spinner-loading';
 import '../component/restaurant-detail';
 import '../component/restaurant-categories';
 import '../component/restaurant-menus';
 import '../component/customer-reviews';
 import '../component/review-list';
-import '../component/favorite-button';
+import '../component/like-button';
+import '../component/not-found';
 
 const Detail = {
   async render() {
@@ -36,7 +40,7 @@ const Detail = {
             <review-list></review-list>
           </div>
         </section>
-        <favorite-button></favorite-button>
+        <like-button></like-button>
       `;
 
       this._renderRestaurantDetail(restaurant);
@@ -44,12 +48,11 @@ const Detail = {
       this._renderRestaurantMenus(restaurant);
       this._addCustomerReviews(restaurant);
       this._renderRestaurantReviewList(restaurant);
+      this._renderLikeButton(restaurant);
     } catch (e) {
-      mainContent.innerHTML = `
-        <section>
-          <h2>Gagal memuat data</h2>
-        </section>
-      `;
+      mainContent.innerHTML = '<not-found></not-found>';
+      const notFound = document.querySelector('not-found');
+      notFound.message = 'Failed to load data';
     }
   },
 
@@ -70,23 +73,13 @@ const Detail = {
 
   _addCustomerReviews(restaurant) {
     const customerReviews = document.querySelector('customer-reviews');
-
-    customerReviews.clickEvent = async () => {
-      const { id } = restaurant;
-      const inputName = customerReviews.valueName;
-      const inputReview = customerReviews.valueReview;
-
-      customerReviews.clickTrigger = true;
-
-      const responseReview = await RestaurantDbSource.restaurantAddCustomerReviews({
-        id,
-        name: inputName,
-        review: inputReview,
-      });
-
-      customerReviews.clickTrigger = false;
-      this._renderRestaurantReviewList(responseReview);
-    };
+    const reviewList = document.querySelector('review-list');
+    CustomerReviewsInitiator.init({
+      customerReviewsContainer: customerReviews,
+      restaurantDb: RestaurantDbSource,
+      reviewListContainer: reviewList,
+      restaurant,
+    });
   },
 
   _renderRestaurantReviewList(restaurant) {
@@ -94,8 +87,13 @@ const Detail = {
     reviewList.restaurant = restaurant;
   },
 
-  _likeRestaurant() {
-
+  _renderLikeButton(restaurant) {
+    const likeButton = document.querySelector('like-button');
+    LikeButtonInitiator.init({
+      likeButtonContainer: likeButton,
+      favoriteRestaurant: FavoriteRestaurantIdb,
+      restaurant,
+    });
   },
 };
 

@@ -1,9 +1,10 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-underscore-dangle */
 
-import FavoriteRestaurantIdb from '../../data/restaurantidb-source';
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 import '../component/spinner-loading';
 import '../component/restaurant-list';
+import '../component/not-found';
 
 const Favorite = {
   async render() {
@@ -29,17 +30,21 @@ const Favorite = {
         this._renderFavoriteRestaurantList(restaurants);
       } else {
         mainContent.innerHTML = `
-          <section>
-            <h2>No data to display</h2>
+          <section class="restaurants">
+            <h2 class="restaurants__heading">Favorite Cafe</h2>
+            <div class="restaurants__body">
+              <not-found></not-found>
+            </div>
           </section>
         `;
+
+        const notFound = document.querySelector('not-found');
+        notFound.message = 'No favorite restaurant was selected';
       }
     } catch (e) {
-      mainContent.innerHTML = `
-        <section>
-          <h2>Gagal memuat data</h2>
-        </section>
-      `;
+      mainContent.innerHTML = '<not-found></not-found>';
+      const notFound = document.querySelector('not-found');
+      notFound.message = 'Failed to load data';
     }
   },
 

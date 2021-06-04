@@ -1,15 +1,10 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-underscore-dangle */
 
-import FavoriteRestaurantIdb from '../data/restaurantidb-source';
-import {
-  createLikeButtonTemplate,
-  createLikedButtonTemplate,
-} from '../views/templates/templates-creator';
-
 const LikeButtonInitiator = {
-  async init({ likeButtonContainer, restaurant }) {
+  async init({ likeButtonContainer, favoriteRestaurant, restaurant }) {
     this._likeButtonContainer = likeButtonContainer;
+    this._favoriteRestaurant = favoriteRestaurant;
     this._restaurant = restaurant;
 
     await this._renderButton();
@@ -26,29 +21,26 @@ const LikeButtonInitiator = {
   },
 
   async _isRestaurantExist(id) {
-    const restaurant = await FavoriteRestaurantIdb.getRestaurant(id);
-
+    const restaurant = await this._favoriteRestaurant.getRestaurant(id);
     return !!restaurant;
   },
 
   _renderLike() {
-    this._likeButtonContainer.innerHTML = createLikeButtonTemplate();
-
-    const likeButton = document.getElementById('likeButton');
-    likeButton.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
-      this._renderButton();
-    });
+    this._likeButtonContainer.isRestaurantExist = false;
+    this._likeButtonContainer.clickEvent = async () => {
+      await this._favoriteRestaurant.putRestaurant(this._restaurant);
+      this._likeButtonContainer.isRestaurantExist = true;
+      await this._renderButton();
+    };
   },
 
   _renderLiked() {
-    this._likeButtonContainer.innerHTML = createLikedButtonTemplate();
-
-    const likeButton = document.getElementById('likeButton');
-    likeButton.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
-      this._renderButton();
-    });
+    this._likeButtonContainer.isRestaurantExist = true;
+    this._likeButtonContainer.clickEvent = async () => {
+      await this._favoriteRestaurant.deleteRestaurant(this._restaurant.id);
+      this._likeButtonContainer.isRestaurantExist = false;
+      await this._renderButton();
+    };
   },
 };
 

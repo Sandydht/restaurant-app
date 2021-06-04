@@ -35,16 +35,16 @@ class CustomerReviews extends HTMLElement {
 
       <div class="body">
         <div class="input__name">
-          <label for="name">Name</label>
-          <input type="text" name="name" id="name" placeholder="Your name...">
+          <label for="name">Your name</label>
+          <input type="text" name="name" id="name" placeholder="Enter your name">
         </div>
 
         <div class="input__review">
-          <label for="review">Review</label>
-          <textarea type="text" name="review" id="review" rows="5"  placeholder="Your review..."></textarea>
+          <label for="review">Your review</label>
+          <textarea type="text" name="review" id="review" rows="5" placeholder="Enter your review"></textarea>
         </div>
 
-        <button id="submitReview" class="submit__review ${this._click ? 'loading' : ''}" ${this._click ? 'disabled' : ''}>${this._click ? '<i class="fa fa-spinner fa-spin"></i>' : 'Submit'}</button>
+        <button id="submitReview" aria-label="submit your review" class="submit__review ${this._click ? 'loading' : ''}" ${this._click ? 'disabled' : ''}>${this._click ? '<i class="fa fa-spinner fa-spin"></i>' : 'Submit'}</button>
       </div>
     `;
 

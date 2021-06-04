@@ -15,21 +15,17 @@ class RestaurantDbSource {
     return responseJson.restaurant;
   }
 
-  static async restaurantAddCustomerReviews({ id, name, review }) {
-    const response = await fetch(API_ENDPOINT.ADD_CUSTOMER_REVIEW, {
+  static async addCustomerReviews(reviews) {
+    const response = await fetch(API_ENDPOINT.ADD_CUSTOMER_REVIEWS, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'X-Auth-Token': CONFIG.API_KEY,
       },
-      body: JSON.stringify({
-        id,
-        name,
-        review,
-      }),
+      body: JSON.stringify(reviews),
     });
     const responseJson = await response.json();
-    await this.restaurantDetail(id);
+    await this.restaurantDetail(reviews.id);
     return responseJson;
   }
 }

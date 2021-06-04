@@ -6,6 +6,7 @@ import RestaurantDbSource from '../../data/restaurantdb-source';
 import '../component/hero-image';
 import '../component/restaurant-list';
 import '../component/spinner-loading';
+import '../component/not-found';
 
 const Home = {
   async render() {
@@ -28,11 +29,9 @@ const Home = {
 
       this._renderRestaurantList(restaurants);
     } catch (e) {
-      mainContent.innerHTML = `
-        <section>
-          <h2>Gagal memuat data</h2>
-        </section>
-      `;
+      mainContent.innerHTML = '<not-found></not-found>';
+      const notFound = document.querySelector('not-found');
+      notFound.message = 'Failed to load data';
     }
   },
 

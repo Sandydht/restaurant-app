@@ -49,21 +49,26 @@ app-drawer {
     transition: all 0.3s;
     padding: 20px;
 
-    .nav__item {
-      list-style: none;
+    .nav__list {
+      display: grid;
+      gap: 10px;
 
-      a {
-        text-decoration: none;
-        display: flex;
-        min-width: 44px;
-        min-height: 44px;
-        cursor: pointer;
-        color: $color__primary;
-        align-items: center;
-      }
+      .nav__item {
+        list-style: none;
 
-      a:hover {
-        font-weight: bold;
+        a {
+          text-decoration: none;
+          display: flex;
+          min-width: 44px;
+          min-height: 44px;
+          cursor: pointer;
+          color: $color__primary;
+          align-items: center;
+        }
+
+        a:hover {
+          font-weight: bold;
+        }
       }
     }
   }

@@ -20,6 +20,7 @@ customer-reviews {
   .body {
     display: grid;
     gap: 10px;
+    overflow: hidden;
 
     .input__name,
     .input__review {
@@ -29,6 +30,7 @@ customer-reviews {
 
     input,
     textarea {
+      resize: none;
       width: 100%;
       display: inline-flex;
       min-width: 44px;
@@ -38,10 +40,7 @@ customer-reviews {
       border-radius: 5px;
       border: 1px solid black;
       outline: none;
-      -webkit-transition: all 0.3s ease-in-out;
-      -moz-transition: all 0.3s ease-in-out;
-      -ms-transition: all 0.3s ease-in-out;
-      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
     }
 
     input:hover,

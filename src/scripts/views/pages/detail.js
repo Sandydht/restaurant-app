@@ -4,7 +4,6 @@ import UrlParser from '../../routes/url-parser';
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
-import CustomerReviewsInitiator from '../../utils/customer-reviews-initiator';
 import '../component/spinner-loading';
 import '../component/restaurant-detail';
 import '../component/restaurant-categories';
@@ -13,6 +12,7 @@ import '../component/customer-reviews';
 import '../component/review-list';
 import '../component/like-button';
 import '../component/not-found';
+import '../component/snackbar-component';
 
 const Detail = {
   async render() {
@@ -41,6 +41,7 @@ const Detail = {
           </div>
         </section>
         <like-button></like-button>
+        <snackbar-component></snackbar-component>
       `;
 
       this._renderRestaurantDetail(restaurant);
@@ -73,13 +74,25 @@ const Detail = {
 
   _addCustomerReviews(restaurant) {
     const customerReviews = document.querySelector('customer-reviews');
-    const reviewList = document.querySelector('review-list');
-    CustomerReviewsInitiator.init({
-      customerReviewsContainer: customerReviews,
-      restaurantDb: RestaurantDbSource,
-      reviewListContainer: reviewList,
-      restaurant,
-    });
+    customerReviews.clickEvent = async () => {
+      const { id } = restaurant;
+      const { name, review } = customerReviews.value;
+      const reviews = {
+        id,
+        name,
+        review,
+      };
+      customerReviews.clickTrigger = true;
+      try {
+        const response = await RestaurantDbSource.addCustomerReviews(reviews);
+        customerReviews.clickTrigger = false;
+        this._renderSnackbar(true, true, 'Send review success');
+        this._renderRestaurantReviewList(response);
+      } catch (e) {
+        customerReviews.clickTrigger = false;
+        this._renderSnackbar(true, false, 'Send review failed');
+      }
+    };
   },
 
   _renderRestaurantReviewList(restaurant) {
@@ -94,6 +107,13 @@ const Detail = {
       favoriteRestaurant: FavoriteRestaurantIdb,
       restaurant,
     });
+  },
+
+  _renderSnackbar(show, success, message) {
+    const snackbarComponent = document.querySelector('snackbar-component');
+    snackbarComponent.show = show;
+    snackbarComponent.success = success;
+    snackbarComponent.message = message;
   },
 };
 

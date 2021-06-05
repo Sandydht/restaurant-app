@@ -1,0 +1,52 @@
+/** @format */
+
+snackbar-component {
+  #snackbar {
+    visibility: hidden;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    font-size: 12pt;
+  }
+
+  #snackbar.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
+  #snackbar.show.success {
+    background-color: green;
+  }
+
+  #snackbar.show.failed {
+    background-color: red;
+  }
+
+  @keyframes fadein {
+    from {
+      left: 0;
+      opacity: 0;
+    }
+
+    to {
+      left: 20px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeout {
+    from {
+      left: 20px;
+      opacity: 1;
+    }
+
+    to {
+      left: 0;
+      opacity: 0;
+    }
+  }
+}

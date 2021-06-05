@@ -39,7 +39,7 @@ const Favorite = {
         `;
 
         const notFound = document.querySelector('not-found');
-        notFound.message = 'No favorite restaurant was selected';
+        notFound.message = 'No favorite cafe was selected';
       }
     } catch (e) {
       mainContent.innerHTML = '<not-found></not-found>';

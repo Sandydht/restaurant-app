@@ -2,7 +2,6 @@
 
 import 'regenerator-runtime';
 import '../styles/main.scss';
-import '../styles/responsive.scss';
 import App from './views/app';
 import swRegister from './utils/sw-register';
 import './views/component/app-drawer';

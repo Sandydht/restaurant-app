@@ -96,16 +96,21 @@ app-drawer {
       transition: unset;
       padding: unset;
 
-      .nav__item {
-        display: inline-flex;
-        width: 120px;
-        justify-content: center;
-        align-items: center;
+      .nav__list {
+        display: unset;
+        gap: unset;
 
-        a {
+        .nav__item {
+          display: inline-flex;
+          width: 120px;
           justify-content: center;
-          font-size: 14pt;
-          color: $color__secondary;
+          align-items: center;
+
+          a {
+            justify-content: center;
+            font-size: 14pt;
+            color: $color__secondary;
+          }
         }
       }
     }

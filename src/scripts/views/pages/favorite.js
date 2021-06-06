@@ -44,7 +44,7 @@ const Favorite = {
     } catch (e) {
       mainContent.innerHTML = '<not-found></not-found>';
       const notFound = document.querySelector('not-found');
-      notFound.message = 'Failed to load data';
+      notFound.message = 'Failed to load data \nPlease check your internet connection';
     }
   },
 

@@ -6,8 +6,11 @@ not-found {
   align-items: center;
   min-width: 100%;
   min-height: 100%;
+  white-space: pre-wrap;
+  line-height: 1.5em;
 
   p {
+    text-align: center;
     font-weight: bold;
     font-size: 14pt;
   }

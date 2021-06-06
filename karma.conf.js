@@ -1,5 +1,9 @@
 // Karma configuration
 // Generated on Fri Jul 03 2020 20:15:52 GMT+0700 (Western Indonesia Time)
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+
 module.exports = function (config) {
   config.set({
 
@@ -11,9 +15,7 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
-    files: [
-      'specs/**/*Spec.js',
-    ],
+    files: ['specs/**/*Spec.js'],
 
     // list of files / patterns to exclude
     exclude: [],
@@ -31,6 +33,31 @@ module.exports = function (config) {
       // webpack configuration
       devtool: 'inline-source-map',
       mode: 'development',
+      module: {
+        rules: [
+          {
+            test: /\.s[ac]ss$/,
+            use: [
+              {
+                loader: 'style-loader',
+              },
+              {
+                loader: 'css-loader',
+              },
+              {
+                loader: 'sass-loader',
+              },
+            ],
+          },
+        ],
+      },
+
+      plugins: [
+        new HtmlWebpackPlugin({
+          template: path.resolve(__dirname, 'src/templates/index.html'),
+          filename: 'index.html',
+        }),
+      ],
     },
 
     webpackMiddleware: {

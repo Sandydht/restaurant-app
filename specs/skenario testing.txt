@@ -51,13 +51,13 @@
 # Use case menampilkan hasil pencarian di Browser
 1. Buka halaman restaurant yang disukai.
 2. Tampilkan semua restaurant yang disukai.
-	a. Presenter meminta semua daftar restaurant yang disukai kepada Model.
+	a. Presenter meminta semua daftar restaurant yang disukai kepada Model. (selesai)
 	b. Model mengembalikan daftar restaurant.
 	c. Presenter meminta View menampilkan daftar restaurant.
 3. Bila tidak ada restaurant yang disukai, berikan informasi.
-	a. Presenter meminta semua daftar restaurant yang disukai kepada Model.
-	b. Model mengembalikan daftar kosong.
-	c. Presenter meminta View menampilkan informasi bahwa belum ada restaurant yang disukai.
+	a. Presenter meminta semua daftar restaurant yang disukai kepada Model. (selesai)
+	b. Model mengembalikan daftar kosong. (selesai)
+	c. Presenter meminta View menampilkan informasi bahwa belum ada restaurant yang disukai. (selesai)
 
 # TODO
 1. Template hasil pencarian menggunakan template menampilkan restaurant yang disukai.

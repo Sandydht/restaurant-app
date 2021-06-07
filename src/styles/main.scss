@@ -50,10 +50,15 @@ body {
   grid-template-rows: auto 1fr;
   gap: 20px;
   margin-top: 50px;
+  justify-content: center;
 
   .restaurants__heading,
   .restaurant__heading {
     text-align: center;
+  }
+
+  .query {
+    width: 700px;
   }
 
   .restaurants__body,

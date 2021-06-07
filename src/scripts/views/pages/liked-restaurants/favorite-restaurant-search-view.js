@@ -1,23 +1,18 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable class-methods-use-this */
+
+import '../../component/restaurant-list';
+import '../../component/not-found';
+
 class FavoriteRestaurantSearchView {
   getTemplate() {
     return `
-      <div id="restaurant-search-container">
-        <input id="query" type="text">
-        <div class="restaurant-result-container">
-          <ul class="restaurants"></ul>
-        </div>
-      </div>
-    `;
-  }
-
-  getFavoriteRestaurantTemplate() {
-    return `
-      <div class="content">
-        <h2 class="content__heading">Your Liked Restaurant</h2>
-        <div id="restaurants" class="restaurants"></div>
-      </div>
+      <section class="restaurants">
+        <h2 class="restaurants__heading">Favorite Restaurants</h2>
+        <input id="query" class="query" type="text">
+        <div class="restaurants__body" id="restaurantsBody"></div>
+      </section>
     `;
   }
 
@@ -27,26 +22,20 @@ class FavoriteRestaurantSearchView {
     });
   }
 
-  showRestaurants(restaurants = []) {
-    let html;
+  showFavoriteRestaurants(restaurants = []) {
+    const restaurantsBody = document.getElementById('restaurantsBody');
 
-    if (restaurants.length > 0) {
-      html = restaurants.reduce(
-        (carry, restaurant) => carry.concat(`<li class="restaurant">
-        <span class="restaurant__name">${restaurant.name || '-'}</span>
-      </li>`),
-        '',
-      );
+    if (restaurants.length) {
+      restaurantsBody.innerHTML = '<restaurant-list></restaurant-list>';
+      const restaurantList = document.querySelector('restaurant-list');
+      restaurantList.restaurants = restaurants;
     } else {
-      html = '<div class="restaurants__not__found">Restaurant tidak ditemukan</div>';
+      restaurantsBody.innerHTML = '<not-found></not-found>';
+      const notFound = document.querySelector('not-found');
+      notFound.message = 'Tidak ada restaurant untuk ditampilkan';
     }
 
-    document.querySelector('.restaurants').innerHTML = html;
-    document.getElementById('restaurant-search-container').dispatchEvent(new Event('restaurants:searched:updated'));
-  }
-
-  showFavoriteRestaurants(restaurants) {
-    document.getElementById('restaurants').innerHTML = '<div class="restaurant-item__not__found"></div>';
+    restaurantsBody.dispatchEvent(new Event('restaurants:updated'));
   }
 }
 

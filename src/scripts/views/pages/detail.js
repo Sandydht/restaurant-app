@@ -3,7 +3,7 @@
 import UrlParser from '../../routes/url-parser';
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LikeButtonPresenter from '../../utils/like-button-presenter';
 import '../component/spinner-loading';
 import '../component/restaurant-detail';
 import '../component/restaurant-categories';
@@ -102,7 +102,7 @@ const Detail = {
 
   _renderLikeButton(restaurant) {
     const likeButton = document.querySelector('like-button');
-    LikeButtonInitiator.init({
+    LikeButtonPresenter.init({
       likeButtonContainer: likeButton,
       favoriteRestaurant: FavoriteRestaurantIdb,
       restaurant,

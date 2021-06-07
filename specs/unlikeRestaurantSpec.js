@@ -25,6 +25,12 @@ describe('Unliking A Restaurant', () => {
     expect(document.querySelector('[aria-label="unlike this restaurant"]')).toBeTruthy();
   });
 
+  it('should not display like widget when the restaurant has been liked', async () => {
+    await TestFactories.createLikedButtonPresenterWithRestaurant({ id: 1 });
+
+    expect(document.querySelector('[aria-label="like this restaurant"]')).toBeFalsy();
+  });
+
   it('should be able to remove liked restaurant from the list', async () => {
     await TestFactories.createLikedButtonPresenterWithRestaurant({ id: 1 });
 

@@ -14,7 +14,7 @@ describe('Liking A Restaurant', () => {
     addLikeButtonContainer();
   });
 
-  it('should show the like button when the restaurant has no been liked before', async () => {
+  it('should show the like button when the restaurant has not been liked before', async () => {
     await TestFactories.createLikedButtonPresenterWithRestaurant({ id: 1 });
 
     expect(document.querySelector('[aria-label="like this restaurant"]')).toBeTruthy();

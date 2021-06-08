@@ -9,11 +9,9 @@ import '../../component/not-found';
 class FavoriteRestaurantSearchView {
   getTemplate() {
     return `
-    <section class="content">
-      <h2 class="content__heading">Favorite Cafe</h2>
-      <search-favorite></search-favorite>
-      <div id="contentBody" class="content__body"></div>
-    </section>
+    <h2 class="content__heading">Favorite Cafe</h2>
+    <search-favorite></search-favorite>
+    <div id="contentBody" class="content__body"></div>
   `;
   }
 

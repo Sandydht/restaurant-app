@@ -7,6 +7,8 @@ import FavoriteRestaurantIdb from '../../../models/favorite-restaurant-idb';
 import UrlParser from '../../../routes/url-parser';
 import LikeButtonPresenter from '../../../presenters/like-button-presenter';
 import AddCustomerReviewsPresenter from '../../../presenters/add-customer-reviews-presenter';
+import CustomerReviewsShowPresenter from '../../../presenters/customer-reviews-show-presenter';
+import CustomerReviewsView from '../customer-reviews/customer-reviews-view';
 
 import './detail-pages.scss';
 import '../../component/spinner-loading';
@@ -29,6 +31,7 @@ class DetailPages extends HTMLElement {
     try {
       const url = UrlParser.parseActiveUrlWithoutCombiner();
       const restaurant = await RestaurantDbSource.restaurantDetail(url.id);
+      const customerReviewsView = new CustomerReviewsView();
 
       this.innerHTML = `
         <section class="content">
@@ -40,24 +43,24 @@ class DetailPages extends HTMLElement {
             <hr>
             <restaurant-menus></restaurant-menus>
             <hr>
-            <customer-reviews></customer-reviews>
-            <review-list></review-list>
+            ${customerReviewsView.getTemplate()}
           </div>
         </section>
         <like-button></like-button>
-        <snackbar-component></snackbar-component>
       `;
 
       this.querySelector('restaurant-detail').restaurant = restaurant;
       this.querySelector('restaurant-categories').restaurant = restaurant;
       this.querySelector('restaurant-menus').restaurant = restaurant;
-      this.querySelector('review-list').restaurant = restaurant;
 
       new AddCustomerReviewsPresenter({
-        customerReviewsContainer: this.querySelector('customer-reviews'),
-        reviewListContainer: this.querySelector('review-list'),
-        snackbarContainer: this.querySelector('snackbar-component'),
+        customerReviewsView,
         restaurantDb: RestaurantDbSource,
+        restaurant,
+      });
+
+      new CustomerReviewsShowPresenter({
+        customerReviewsView,
         restaurant,
       });
 

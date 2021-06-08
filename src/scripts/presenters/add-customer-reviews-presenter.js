@@ -5,73 +5,49 @@
 
 class AddCustomerReviewsPresenter {
   constructor({
-    customerReviewsContainer,
-    reviewListContainer,
-    snackbarContainer,
+    customerReviewsView,
     restaurantDb,
     restaurant,
   }) {
-    this._customerReviewsContainer = customerReviewsContainer;
-    this._reviewListContainer = reviewListContainer;
-    this._snackbarContainer = snackbarContainer;
+    this._customerReviewsView = customerReviewsView;
     this._restaurantDb = restaurantDb;
     this._restaurant = restaurant;
-    this._addReview();
+
+    this._listenToSubmitReviewByUser();
   }
 
-  _addReview() {
-    this._customerReviewsContainer.clickEvent = async () => {
-      const review = this._getInputValue(this._restaurant);
-      this._customerReviewsContainer.clickTrigger = true;
-
-      const responseReview = await this._restaurantDb.addCustomerReviews(review);
-
-      if (responseReview.error) {
-        this._renderFailed(responseReview);
-      } else {
-        this._renderSuccess(responseReview);
-      }
-    };
-  }
-
-  _getInputValue(restaurant) {
-    const { id } = restaurant;
-    const { value } = this._customerReviewsContainer;
-
-    return {
-      id,
-      name: value.name,
-      review: value.review,
-    };
-  }
-
-  _renderSuccess(responseReview) {
-    this._customerReviewsContainer.clickTrigger = false;
-    this._renderSnackbar({
-      show: true,
-      success: true,
-      message: responseReview.message,
-    });
-    this._renderReviewList(responseReview);
-  }
-
-  _renderFailed(responseReview) {
-    this._customerReviewsContainer.clickTrigger = false;
-    this._renderSnackbar({
-      show: true,
-      success: false,
-      message: responseReview.message,
+  _listenToSubmitReviewByUser() {
+    this._customerReviewsView.runWhenUserSubmitReview(() => {
+      this._addCustomerReviews();
     });
   }
 
-  _renderReviewList(restaurant) {
-    this._reviewListContainer.restaurant = restaurant;
+  async _addCustomerReviews() {
+    const inputValue = this._customerReviewsView.getInputValue(this._restaurant);
+    this._customerReviewsView.showSubmitReviewButtonLoading(true);
+
+    const responseReview = await this._restaurantDb.addCustomerReviews(inputValue);
+    this._showCustomerReviewList(responseReview);
   }
 
-  _renderSnackbar({ show, success, message }) {
-    this._snackbarContainer.show = show;
-    this._snackbarContainer.success = success;
-    this._snackbarContainer.message = message;
+  async _showCustomerReviewList(response) {
+    if (response.error) {
+      this._customerReviewsView.showReviewList(await this._restaurantDb.restaurantDetail(this._restaurant.id));
+      this._customerReviewsView.showSubmitReviewButtonLoading(false);
+      this._renderFailedSnackbar({ message: response.message });
+    } else {
+      this._customerReviewsView.showReviewList(response);
+      this._customerReviewsView.showSubmitReviewButtonLoading(false);
+      this._renderSuccessSnackbar({ message: response.message });
+    }
+  }
+
+  _renderSuccessSnackbar({ show = true, success = true, message }) {
+    this._customerReviewsView.showSnackbar({ show, success, message });
+  }
+
+  _renderFailedSnackbar({ show = true, success = false, message }) {
+    this._customerReviewsView.showSnackbar({ show, success, message });
   }
 }
 

@@ -1,64 +1,18 @@
-# Use case
-1. Tampilkan halaman restaurant.
-2. Bila restaurant belum disukai, tampilkan widget untuk menyukai restaurant. Widget ini berbentuk hati kosong.
-3. Bila restaurant disukai, tampilkan widget berbentuk hati penuh. Pengguna dapat membatalkan kesukaannya pada restaurant ini.
+# Skenario menyukai restaurant
+1. Restaurant belum disukai.
+2. Widget untuk menyukai restaurant ditampilkan.
+3. Widget untuk menyukai restaurant ditekan oleh pengguna.
+4. Restaurant ditambahkan ke daftar restaurant yang disukai.
+	a. Ternyata restaurant sudah disukai.
+		- Tidak perlu menyimpan kembali.
+	b. Data restaurant tidak memiliki ID
+		- Sistem tidak memproses penyimpanan.
+		- Sistem tidak gagal.
 
-------------------------------------------------------------------------
-
-# Use case menyukai restaurant
-1. Restaurant belum disukai. (selesai)
-2. Widget untuk menyukai restaurant ditampilkan. (selesai)
-3. Widget menyukai restaurant ditekan oleh pengguna. (selesai)
-4. Restaurant ditambahkan ke daftar restaurant yang disukai. (selesai)
-	a. Ternyata restaurant sudah disukai. (selesai)
-		- Tidak perlu menyimpan kembali. (selesai)
-	b. Data restaurant tidak memiliki ID. (selesai)
-		- Sistem tidak memproses penyimpanan. (selesai)
-		- Sistem tidak gagal. (selesai)
-		
-------------------------------------------------------------------------
-		
-# Use case batal menyukai restaurant
-1. Restaurant sudah disukai. (selesai)
-2. Widget untuk batal menyukai restaurant ditampilkan. (selesai)
-3. Widget batal menyukai restaurant ditekan oleh pengguna. (selesai)
-4. Restaurant dihapus dari daftar restaurant yang disukai. (selesai)
-	a. Ternyata restaurant tidak ada dalam daftar restaurant yang disukai. (selesai)
-
-------------------------------------------------------------------------
-
-# Use case mencari restaurant
-1. Pengguna memasukan nama restaurant yang akan dicari.
-2. Restaurant yang dicari akan ditampilkan.
-	a. Bila restaurant tidak ada, tampilkan informasi bahwa tidak ada restaurant yang ditemukan.
-
-# Test case
-1. Bila pengguna memasukan query 'restaurant A', maka:
-	a. Presenter akan meminta ke model untuk memberikan restaurant yang disukai dengan yang cocok untuk pencarian 'restaurant A'. (selesai)
-	b. Presenter akan menampilkan View (DOM) semua restaurant yang dikembalikan oleh Model. (selesai)
-2. Bila pengguna memasukan query kosong, maka:
-	a. Presenter akan meminta Model untuk memberikan semua restaurant yang disukai. (selesai)
-	b. Presenter akan menampilkan ke View semua restaurant yang disukai yang telah diberikan oleh Model. (selesai)
-3. Bila pengguna memasukan query, dan tidak ada restaurant yang cocok, maka:
-	a. Presenter meminta Model untuk mencari restaurant. (selesai)
-	b. Presenter akan menampilkan informasi tidak ada restaurant yang ditemukan pada View. (selesai)
-
-# TODO
-1. Ringkas kode untuk mempersiapkan tes. (selesai)
-
-------------------------------------------------------------------------
-
-# Use case menampilkan hasil pencarian di Browser
-1. Buka halaman restaurant yang disukai.
-2. Tampilkan semua restaurant yang disukai.
-	a. Presenter meminta semua daftar restaurant yang disukai kepada Model. (selesai)
-	b. Model mengembalikan daftar restaurant.
-	c. Presenter meminta View menampilkan daftar restaurant.
-3. Bila tidak ada restaurant yang disukai, berikan informasi.
-	a. Presenter meminta semua daftar restaurant yang disukai kepada Model. (selesai)
-	b. Model mengembalikan daftar kosong. (selesai)
-	c. Presenter meminta View menampilkan informasi bahwa belum ada restaurant yang disukai. (selesai)
-
-# TODO
-1. Template hasil pencarian menggunakan template menampilkan restaurant yang disukai.
-2. Mengubah nama FavoriteRestaurantSearchView agar lebih general.
+---------------------------------------------------------------------------
+# Skenario batal menyukai restaurant
+1. Restaurant sudah disukai.
+2. Widget untuk batal menyukai restaurant ditampilkan.
+3. Widget pembatalan ditekan oleh pengguna.
+4. Restaurant dihapus dari daftar restaurant yang disukai.
+	a. Ternyata restaurant tidak ada dalam daftar restaurant yang disukai.

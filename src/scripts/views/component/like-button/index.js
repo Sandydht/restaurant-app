@@ -19,13 +19,15 @@ class LikeButton extends HTMLElement {
   }
 
   render() {
+    this.setAttribute('aria-label', this._exist ? 'unlike this restaurant' : 'like this restaurant');
+    this.setAttribute('id', 'likeButton');
     this.innerHTML = `
       <button aria-label="${this._exist ? 'unlike this restaurant' : 'like this restaurant'}" id="likeButton">
         ${this._exist ? ' <i class="fa fa-heart" aria-hidden="true"></i>' : '<i class="fa fa-heart-o" aria-hidden="true"></i>'}
       </button>
     `;
 
-    this.querySelector('#likeButton').addEventListener('click', this._clickEvent);
+    this.querySelector(`[aria-label="${this._exist ? 'unlike this restaurant' : 'like this restaurant'}"]`).addEventListener('click', this._clickEvent);
   }
 }
 

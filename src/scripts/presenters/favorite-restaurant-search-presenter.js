@@ -1,15 +1,15 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
 
 class FavoriteRestaurantSearchPresenter {
-  constructor({ favoriteRestaurants, view }) {
+  constructor({ view, favoriteRestaurant }) {
     this._view = view;
-    this._listenToSearchRequestByuser();
-    this._favoriteRestaurants = favoriteRestaurants;
+    this._favoriteRestaurant = favoriteRestaurant;
+
+    this._listenToSearchRequestByUser();
   }
 
-  _listenToSearchRequestByuser() {
+  _listenToSearchRequestByUser() {
     this._view.runWhenUserIsSearching((latestQuery) => {
       this._searchRestaurants(latestQuery);
     });
@@ -20,20 +20,20 @@ class FavoriteRestaurantSearchPresenter {
     let foundRestaurants;
 
     if (this._latestQuery.length > 0) {
-      foundRestaurants = await this._favoriteRestaurants.searchRestaurants(this._latestQuery);
+      foundRestaurants = await this._favoriteRestaurant.searchRestaurants(this._latestQuery);
     } else {
-      foundRestaurants = await this._favoriteRestaurants.getAllRestaurants();
+      foundRestaurants = await this._favoriteRestaurant.getAllRestaurants();
     }
 
     this._showFoundRestaurants(foundRestaurants);
   }
 
   _showFoundRestaurants(restaurants) {
-    this._view.showFavoriteRestaurants(restaurants);
-  }
-
-  get latestQuery() {
-    return this._latestQuery;
+    if (restaurants.length > 0) {
+      this._view.showFavoriteRestaurants(restaurants);
+    } else {
+      this._view.showFavoriteRestaurants(restaurants);
+    }
   }
 }
 

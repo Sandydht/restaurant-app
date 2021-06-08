@@ -42,30 +42,3 @@ body {
 .skip__link:focus {
   top: 100px;
 }
-
-// restaurants
-.restaurants,
-.restaurant {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 20px;
-  margin-top: 50px;
-  justify-content: center;
-
-  .restaurants__heading,
-  .restaurant__heading {
-    text-align: center;
-  }
-
-  .query {
-    width: 700px;
-  }
-
-  .restaurants__body,
-  .restaurant__body {
-    padding: 20px;
-    display: grid;
-    justify-content: center;
-    gap: 20px;
-  }
-}

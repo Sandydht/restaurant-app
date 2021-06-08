@@ -1,0 +1,26 @@
+/** @format */
+
+// color palette
+$color__primary: #02475e;
+$color__secondary: #fefecc;
+
+search-favorite {
+  input {
+    display: inline-flex;
+    width: 100%;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    font-size: 12pt;
+    border-radius: 5px;
+    border: 1px solid black;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+  }
+
+  input:hover,
+  input:focus {
+    border: 1px solid $color__primary;
+    box-shadow: 0 0 5px $color__primary;
+  }
+}

@@ -1,0 +1,15 @@
+/** @format */
+
+favorite-pages {
+  .content {
+    display: grid;
+    gap: 20px;
+    grid-template-rows: auto auto 1fr;
+    padding: 20px;
+    min-height: 100%;
+
+    .content__heading {
+      text-align: center;
+    }
+  }
+}

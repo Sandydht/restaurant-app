@@ -1,0 +1,21 @@
+/** @format */
+
+home-pages {
+  display: grid;
+  gap: 20px;
+  min-height: 100%;
+
+  .content {
+    display: grid;
+    gap: 20px;
+    grid-template-rows: auto 1fr;
+
+    .content__heading {
+      text-align: center;
+    }
+
+    .content__body {
+      padding: 0 20px 20px 20px;
+    }
+  }
+}

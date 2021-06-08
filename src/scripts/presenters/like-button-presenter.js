@@ -1,14 +1,15 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-underscore-dangle */
+/* eslint-disable no-useless-constructor */
 
-const LikeButtonPresenter = {
-  async init({ likeButtonContainer, favoriteRestaurant, restaurant }) {
+class LikeButtonPresenter {
+  constructor({ likeButtonContainer, favoriteRestaurant, restaurant }) {
     this._likeButtonContainer = likeButtonContainer;
     this._favoriteRestaurant = favoriteRestaurant;
     this._restaurant = restaurant;
 
-    await this._renderButton();
-  },
+    this._renderButton();
+  }
 
   async _renderButton() {
     const { id } = this._restaurant;
@@ -18,12 +19,12 @@ const LikeButtonPresenter = {
     } else {
       this._renderLike();
     }
-  },
+  }
 
   async _isRestaurantExist(id) {
     const restaurant = await this._favoriteRestaurant.getRestaurant(id);
     return !!restaurant;
-  },
+  }
 
   _renderLike() {
     this._likeButtonContainer.isRestaurantExist = false;
@@ -32,7 +33,7 @@ const LikeButtonPresenter = {
       this._likeButtonContainer.isRestaurantExist = true;
       await this._renderButton();
     };
-  },
+  }
 
   _renderLiked() {
     this._likeButtonContainer.isRestaurantExist = true;
@@ -41,7 +42,7 @@ const LikeButtonPresenter = {
       this._likeButtonContainer.isRestaurantExist = false;
       await this._renderButton();
     };
-  },
-};
+  }
+}
 
 export default LikeButtonPresenter;

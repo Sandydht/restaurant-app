@@ -1,17 +1,15 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-underscore-dangle */
-
 class FavoriteRestaurantShowPresenter {
-  constructor({ view, favoriteRestaurants }) {
+  constructor({ view, favoriteRestaurant }) {
     this._view = view;
-    this._favoriteRestaurants = favoriteRestaurants;
+    this._favoriteRestaurant = favoriteRestaurant;
 
     this._showFavoriteRestaurants();
   }
 
   async _showFavoriteRestaurants() {
-    const restaurants = await this._favoriteRestaurants.getAllRestaurants();
-    this._displayRestaurants(restaurants);
+    this._displayRestaurants(await this._favoriteRestaurant.getAllRestaurants());
   }
 
   _displayRestaurants(restaurants) {

@@ -28,12 +28,35 @@
 	a. Bila tidak ada, tampilkan informasi bahwa tidak ada restaurant yang ditemukan.
 
 # Studi kasus
-1. Bila pengguna memasukan query 'restaurant A', maka:
-	a. Presenter akan meminta ke Model untuk memberikan restaurant yang disukai dengan yang cocok untuk pencarian 'restaurant A'.
-	b. Presenter akan menampilkan View (DOM) semua restaurant yang dikembalikan oleh Model.
-2. Bila pengguna memasukan query kosong, maka:
-	a. Presenter akan meminta Model untuk memberikan semua restaurant yang disukai.
-	b. Presenter akan menampilkan ke View semua restaurant yang disukai yang telah diberikan oleh Model.
-3. Bila pengguna memasukan query, dan tidak ada restaurant yang cocok, maka:
-	a. Presenter akan meminta Model untuk mencari restaurant.
-	b. Presenter akan menampilkan informasi tidak ada restaurant yang ditemukan pada View.
+1. Bila pengguna memasukan query 'restaurant a', maka: (selesai)
+	a. Presenter akan meminta ke Model untuk memberikan restaurant yang disukai dengan yang cocok untuk pencarian 'restaurant a'. (selesai)
+	b. Presenter akan menampilkan View (DOM) semua restaurant yang dikembalikan oleh Model. (selesai)
+2. Bila pengguna memasukan query kosong, maka: (selesai)
+	a. Presenter akan meminta Model untuk memberikan semua restaurant yang disukai. (selesai)
+	b. Presenter akan menampilkan ke View semua restaurant yang disukai yang telah diberikan oleh Model. (selesai)
+3. Bila pengguna memasukan query, dan tidak ada restaurant yang cocok, maka: (selesai)
+	a. Presenter akan meminta Model untuk mencari restaurant. (selesai)
+	b. Presenter akan menampilkan informasi tidak ada restaurant yang ditemukan pada View. (selesai)
+
+# TODO
+1. Ringkas kode untuk mempersiapkan test. (selesai)
+
+---------------------------------------------------------------------------
+
+# Use case menampilkan hasil pencarian restaurant pada browser
+1. Buka halaman restaurant yang disukai. (selesai)
+2. Tampilkan semua restaurant yang disukai. (selesai)
+	a. Presenter meminta semua daftar restaurant yang disukai kepada Model. (selesai)
+	b. Model mengembalikan daftar restaurant. (selesai)
+	c. Presenter meminta View menampilkan daftar restaurant. (selesai)
+3. Bila tidak ada restaurant yang disukai, berikan informasi. (selesai)
+	a. Presenter meminta semua daftar restaurant yang disukai kepada Model. (selesai)
+	b. Model mengembalikan daftar kosong. (selesai)
+	c. Presenter meminta View menampilkan informasi bahwa belum ada restaurant yang disukai. (selesai)
+ 
+# TODO
+1. Template hasil pencarian menggunakan template menampilkan restaurant yang disukai. (selesai)
+2. Mengubah nama FavoriteRestaurantSearchView agar lebih general.
+
+---------------------------------------------------------------------------
+

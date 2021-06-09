@@ -3,7 +3,6 @@
 import FavoriteRestaurantSearchPresenter from '../src/scripts/presenters/favorite-restaurant-search-presenter';
 import FavoriteRestaurantSearchView from '../src/scripts/views/pages/liked-restaurants/favorite-restaurant-search-view';
 import FavoriteRestaurantIdb from '../src/scripts/models/favorite-restaurant-idb';
-import '../src/scripts/views/component/search-favorite';
 
 describe('Searching Restaurants', () => {
   let presenter;
@@ -22,9 +21,9 @@ describe('Searching Restaurants', () => {
   };
 
   const constructPresenter = () => {
-    favoriteRestaurants = spyOnAllFunctions(FavoriteRestaurantIdb, 'searchRestaurants');
+    favoriteRestaurants = spyOnAllFunctions(FavoriteRestaurantIdb);
     presenter = new FavoriteRestaurantSearchPresenter({
-      favoriteRestaurant: FavoriteRestaurantIdb,
+      favoriteRestaurants: FavoriteRestaurantIdb,
       view,
     });
   };

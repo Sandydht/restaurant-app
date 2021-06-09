@@ -2,10 +2,10 @@
 /* eslint-disable no-underscore-dangle */
 
 class FavoriteRestaurantSearchPresenter {
-  constructor({ view, favoriteRestaurant }) {
+  constructor({ view, favoriteRestaurants }) {
     this._view = view;
     this._listenToSearchRequestByUser();
-    this._favoriteRestaurant = favoriteRestaurant;
+    this._favoriteRestaurants = favoriteRestaurants;
   }
 
   _listenToSearchRequestByUser() {
@@ -19,9 +19,9 @@ class FavoriteRestaurantSearchPresenter {
     let foundRestaurants;
 
     if (this.latestQuery.length > 0) {
-      foundRestaurants = await this._favoriteRestaurant.searchRestaurants(this.latestQuery);
+      foundRestaurants = await this._favoriteRestaurants.searchRestaurants(this.latestQuery);
     } else {
-      foundRestaurants = await this._favoriteRestaurant.getAllRestaurants();
+      foundRestaurants = await this._favoriteRestaurants.getAllRestaurants();
     }
 
     this._showFoundRestaurants(foundRestaurants);

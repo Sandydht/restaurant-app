@@ -4,9 +4,8 @@
 class FavoriteRestaurantSearchPresenter {
   constructor({ view, favoriteRestaurant }) {
     this._view = view;
-    this._favoriteRestaurant = favoriteRestaurant;
-
     this._listenToSearchRequestByUser();
+    this._favoriteRestaurant = favoriteRestaurant;
   }
 
   _listenToSearchRequestByUser() {
@@ -19,8 +18,8 @@ class FavoriteRestaurantSearchPresenter {
     this._latestQuery = latestQuery.trim();
     let foundRestaurants;
 
-    if (this._latestQuery.length > 0) {
-      foundRestaurants = await this._favoriteRestaurant.searchRestaurants(this._latestQuery);
+    if (this.latestQuery.length > 0) {
+      foundRestaurants = await this._favoriteRestaurant.searchRestaurants(this.latestQuery);
     } else {
       foundRestaurants = await this._favoriteRestaurant.getAllRestaurants();
     }
@@ -29,11 +28,11 @@ class FavoriteRestaurantSearchPresenter {
   }
 
   _showFoundRestaurants(restaurants) {
-    if (restaurants.length > 0) {
-      this._view.showFavoriteRestaurants(restaurants);
-    } else {
-      this._view.showFavoriteRestaurants(restaurants);
-    }
+    this._view.showFavoriteRestaurants(restaurants);
+  }
+
+  get latestQuery() {
+    return this._latestQuery;
   }
 }
 

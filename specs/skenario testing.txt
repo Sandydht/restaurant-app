@@ -21,3 +21,19 @@
 1. Alur negatif menyimpan restaurant tanpa ID tidak boleh menyebabkan kegagalan. (selesai)
 
 ---------------------------------------------------------------------------
+
+# Use case mencari restaurant yang disukai
+1. Pengguna memasukan nama restaurant yang dicari.
+2. Restaurant yang dicari ditampilkan.
+	a. Bila tidak ada, tampilkan informasi bahwa tidak ada restaurant yang ditemukan.
+
+# Studi kasus
+1. Bila pengguna memasukan query 'restaurant A', maka:
+	a. Presenter akan meminta ke Model untuk memberikan restaurant yang disukai dengan yang cocok untuk pencarian 'restaurant A'.
+	b. Presenter akan menampilkan View (DOM) semua restaurant yang dikembalikan oleh Model.
+2. Bila pengguna memasukan query kosong, maka:
+	a. Presenter akan meminta Model untuk memberikan semua restaurant yang disukai.
+	b. Presenter akan menampilkan ke View semua restaurant yang disukai yang telah diberikan oleh Model.
+3. Bila pengguna memasukan query, dan tidak ada restaurant yang cocok, maka:
+	a. Presenter akan meminta Model untuk mencari restaurant.
+	b. Presenter akan menampilkan informasi tidak ada restaurant yang ditemukan pada View.

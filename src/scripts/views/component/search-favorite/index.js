@@ -8,10 +8,6 @@ class SearchFavorite extends HTMLElement {
     this.render();
   }
 
-  get value() {
-    return this.querySelector('#query').value;
-  }
-
   set changeEvent(event) {
     this._changeEvent = event;
     this.render();
@@ -20,7 +16,7 @@ class SearchFavorite extends HTMLElement {
   render() {
     this.innerHTML = '<input id="query" type="text" placeholder="Search you favorite cafe">';
 
-    this.querySelector('#query').addEventListener('change', this._changeEvent);
+    this.addEventListener('change', this._changeEvent);
   }
 }
 

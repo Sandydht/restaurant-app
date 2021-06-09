@@ -15,7 +15,8 @@ class App {
     const page = routes[url];
 
     try {
-      this._content.innerHTML = page;
+      this._content.innerHTML = await page.render();
+      await page.afterRender();
     } catch (e) {
       this._content.innerHTML = '<not-found></not-found>';
       const notFound = document.querySelector('not-found');

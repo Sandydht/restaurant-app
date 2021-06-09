@@ -42,3 +42,42 @@ body {
 .skip__link:focus {
   top: 100px;
 }
+
+.restaurants,
+.restaurant {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+
+  .restaurants__heading,
+  .restaurant__heading {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .restaurants__body,
+  .restaurant__body {
+    padding: 0 20px 20px 20px;
+    display: grid;
+    gap: 20px;
+    justify-content: center;
+  }
+}
+
+.favorite__restaurants {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 20px;
+  padding: 20px;
+
+  .favorite-restaurants__heading {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .favorite-restaurants__body {
+    display: grid;
+    gap: 20px;
+    justify-content: center;
+  }
+}

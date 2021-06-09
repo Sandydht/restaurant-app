@@ -1,13 +1,13 @@
 /* eslint-disable linebreak-style */
-import '../views/pages/home-pages';
-import '../views/pages/favorite-pages';
-import '../views/pages/detail-pages';
+import Home from '../views/pages/home';
+import Favorite from '../views/pages/favorite';
+import Detail from '../views/pages/detail';
 
 const routes = {
-  '/': '<home-pages></home-pages>',
-  '/home': '<home-pages></home-pages>',
-  '/favorite': '<favorite-pages></favorite-pages>',
-  '/detail/:id': '<detail-pages></-pages>',
+  '/': Home,
+  '/home': Home,
+  '/favorite': Favorite,
+  '/detail/:id': Detail,
 };
 
 export default routes;

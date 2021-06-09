@@ -9,9 +9,11 @@ import '../../component/not-found';
 class FavoriteRestaurantSearchView {
   getTemplate() {
     return `
-      <h2 class="content__heading">Favorite Cafe</h2>
-      <search-favorite></search-favorite>
-      <div id="contentBody" class="content__body"></div>
+      <section class="favorite__restaurants">
+        <h2 class="favorite-restaurants__heading">Favorite Cafe</h2>
+        <search-favorite></search-favorite>
+        <div id="favoriteRestaurantsBody" class="favorite-restaurants__body"></div>
+      </section>
     `;
   }
 
@@ -22,21 +24,21 @@ class FavoriteRestaurantSearchView {
   }
 
   showFavoriteRestaurants(restaurants = []) {
-    const contentBody = document.getElementById('contentBody');
+    const favoriteRestaurantsBody = document.getElementById('favoriteRestaurantsBody');
 
     if (restaurants.length) {
-      contentBody.innerHTML = '<restaurant-list></restaurant-list>';
+      favoriteRestaurantsBody.innerHTML = '<restaurant-list></restaurant-list>';
       const restaurantList = document.querySelector('restaurant-list');
 
       restaurantList.restaurants = restaurants;
     } else {
-      contentBody.innerHTML = '<not-found></not-found>';
+      favoriteRestaurantsBody.innerHTML = '<not-found></not-found>';
       const notFound = document.querySelector('not-found');
 
       notFound.message = 'No favorite cafe was selected';
     }
 
-    contentBody.dispatchEvent(new Event('restaurants:updated'));
+    favoriteRestaurantsBody.dispatchEvent(new Event('restaurants:updated'));
   }
 }
 

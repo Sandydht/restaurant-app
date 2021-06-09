@@ -1,18 +1,23 @@
 # Skenario menyukai restaurant
-1. Restaurant belum disukai.
-2. Widget untuk menyukai restaurant ditampilkan.
-3. Widget untuk menyukai restaurant ditekan oleh pengguna.
-4. Restaurant ditambahkan ke daftar restaurant yang disukai.
-	a. Ternyata restaurant sudah disukai.
-		- Tidak perlu menyimpan kembali.
-	b. Data restaurant tidak memiliki ID
-		- Sistem tidak memproses penyimpanan.
-		- Sistem tidak gagal.
+1. Restaurant belum disukai. (selesai)
+2. Widget untuk menyukai restaurant ditampilkan. (selesai)
+3. Widget untuk menyukai restaurant ditekan oleh pengguna. (selesai)
+4. Restaurant ditambahkan ke daftar restaurant yang disukai. (selesai)
+	a. Ternyata restaurant sudah disukai. (selesai)
+		- Tidak perlu menyimpan kembali. (selesai)
+	b. Data restaurant tidak memiliki ID (selesai)
+		- Sistem tidak memproses penyimpanan. (selesai)
+		- Sistem tidak gagal. (selesai)
+
+# Skenario batal menyukai restaurant. (selesai)
+1. Restaurant sudah disukai. (selesai)
+2. Widget untuk batal menyukai restaurant ditampilkan. (selesai)
+3. Widget pembatalan ditekan oleh pengguna. (selesai)
+4. Restaurant dihapus dari daftar restaurant yang disukai. (selesai)
+	a. Ternyata restaurant tidak ada dalam daftar restaurant yang disukai. (selesai)
+
+
+# TODO
+1. Alur negatif menyimpan restaurant tanpa ID tidak boleh menyebabkan kegagalan. (selesai)
 
 ---------------------------------------------------------------------------
-# Skenario batal menyukai restaurant
-1. Restaurant sudah disukai.
-2. Widget untuk batal menyukai restaurant ditampilkan.
-3. Widget pembatalan ditekan oleh pengguna.
-4. Restaurant dihapus dari daftar restaurant yang disukai.
-	a. Ternyata restaurant tidak ada dalam daftar restaurant yang disukai.

@@ -19,7 +19,18 @@ describe('Showing All Favorite Restaurants', () => {
   });
 
   describe('When No Restaurants Have Been Liked', () => {
-    it('should the information that no restaurants have been liked', (done) => {
+    it('should ask for the favorite restaurants', () => {
+      const favoriteRestaurants = spyOnAllFunctions(FavoriteRestaurantIdb);
+
+      new FavoriteRestaurantShowPresenter({
+        view,
+        favoriteRestaurants,
+      });
+
+      expect(favoriteRestaurants.getAllRestaurants).toHaveBeenCalledTimes(1);
+    });
+
+    it('should show the information that no restaurants have been liked', (done) => {
       document.getElementById('favoriteRestaurantsBody').addEventListener('restaurants:updated', () => {
         expect(document.querySelectorAll('not-found').length).toEqual(1);
         done();
@@ -33,17 +44,6 @@ describe('Showing All Favorite Restaurants', () => {
         favoriteRestaurants,
       });
     });
-
-    it('should ask for the favorite restaurants', () => {
-      const favoriteRestaurants = spyOnAllFunctions(FavoriteRestaurantIdb);
-
-      new FavoriteRestaurantShowPresenter({
-        view,
-        favoriteRestaurants,
-      });
-
-      expect(favoriteRestaurants.getAllRestaurants).toHaveBeenCalledTimes(1);
-    });
   });
 
   describe('When Favorite Restaurants Exist', () => {
@@ -56,10 +56,10 @@ describe('Showing All Favorite Restaurants', () => {
       const favoriteRestaurants = spyOnAllFunctions(FavoriteRestaurantIdb);
       favoriteRestaurants.getAllRestaurants.and.returnValues([
         {
-          id: 11, pictureId: 14, name: 'A', rating: 3, descriptio: 'Restaurant A',
+          id: 11, pictureId: 14, name: 'A', rating: 3, description: 'Restaurant A',
         },
         {
-          id: 22, pictureId: 25, name: 'B', rating: 4, descriptio: 'Restaurant B',
+          id: 22, pictureId: 25, name: 'B', rating: 4, description: 'Restaurant B',
         },
       ]);
 

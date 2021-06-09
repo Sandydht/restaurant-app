@@ -23,9 +23,9 @@
 ---------------------------------------------------------------------------
 
 # Use case mencari restaurant yang disukai
-1. Pengguna memasukan nama restaurant yang dicari.
-2. Restaurant yang dicari ditampilkan.
-	a. Bila tidak ada, tampilkan informasi bahwa tidak ada restaurant yang ditemukan.
+1. Pengguna memasukan nama restaurant yang dicari. (selesai)
+2. Restaurant yang dicari ditampilkan. (selesai)
+	a. Bila tidak ada, tampilkan informasi bahwa tidak ada restaurant yang ditemukan. (selesai)
 
 # Studi kasus
 1. Bila pengguna memasukan query 'restaurant a', maka: (selesai)
@@ -56,7 +56,7 @@
  
 # TODO
 1. Template hasil pencarian menggunakan template menampilkan restaurant yang disukai. (selesai)
-2. Mengubah nama FavoriteRestaurantSearchView agar lebih general.
+2. Mengubah nama FavoriteRestaurantSearchView agar lebih general. (selesai)
 
 ---------------------------------------------------------------------------
 

@@ -4,9 +4,6 @@
 
 import RestaurantDbSource from '../../models/restaurantdb-source';
 import UrlParser from '../../routes/url-parser';
-import AddCustomerReviewsPresenter from '../../presenters/add-customer-reviews-presenter';
-import CustomerReviewsShowPresenter from '../../presenters/customer-reviews-show-presenter';
-import CustomerReviewsView from './customer-reviews/customer-reviews-view';
 import FavoriteRestaurantIdb from '../../models/favorite-restaurant-idb';
 import LikeButtonPresenter from '../../presenters/like-button-presenter';
 
@@ -14,10 +11,8 @@ import '../component/spinner-loading';
 import '../component/restaurant-detail';
 import '../component/restaurant-categories';
 import '../component/restaurant-menus';
-import '../component/customer-reviews';
 import '../component/review-list';
 import '../component/like-button';
-import '../component/snackbar-component';
 
 const Detail = {
   async render() {
@@ -29,7 +24,6 @@ const Detail = {
     try {
       const url = UrlParser.parseActiveUrlWithoutCombiner();
       const restaurant = await RestaurantDbSource.restaurantDetail(url.id);
-      const customerReviewsView = new CustomerReviewsView();
 
       mainContent.innerHTML = `
         <section class="restaurant">
@@ -41,7 +35,8 @@ const Detail = {
             <hr>
             <restaurant-menus></restaurant-menus>
             <hr>
-            ${customerReviewsView.getTemplate()}
+            <p style="font-size: 14pt; font-weight: bold;">Customer Reviews</p>
+            <review-list></review-list>
           </div>
         </section>
         <like-button></like-button>
@@ -50,17 +45,7 @@ const Detail = {
       document.querySelector('restaurant-detail').restaurant = restaurant;
       document.querySelector('restaurant-categories').restaurant = restaurant;
       document.querySelector('restaurant-menus').restaurant = restaurant;
-
-      new AddCustomerReviewsPresenter({
-        customerReviewsView,
-        restaurantDb: RestaurantDbSource,
-        restaurant,
-      });
-
-      new CustomerReviewsShowPresenter({
-        customerReviewsView,
-        restaurant,
-      });
+      document.querySelector('review-list').restaurant = restaurant;
 
       await LikeButtonPresenter.init({
         likeButtonContainer: document.querySelector('like-button'),

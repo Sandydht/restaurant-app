@@ -1,4 +1,4 @@
-# Skenario menyukai restaurant
+# Use case menyukai restaurant
 1. Restaurant belum disukai. (selesai)
 2. Widget untuk menyukai restaurant ditampilkan. (selesai)
 3. Widget untuk menyukai restaurant ditekan oleh pengguna. (selesai)
@@ -9,7 +9,7 @@
 		- Sistem tidak memproses penyimpanan. (selesai)
 		- Sistem tidak gagal. (selesai)
 
-# Skenario batal menyukai restaurant. (selesai)
+# Use case batal menyukai restaurant. (selesai)
 1. Restaurant sudah disukai. (selesai)
 2. Widget untuk batal menyukai restaurant ditampilkan. (selesai)
 3. Widget pembatalan ditekan oleh pengguna. (selesai)
@@ -60,3 +60,21 @@
 
 ---------------------------------------------------------------------------
 
+# Use case menambah customer reviews
+1. Pengguna mengisi form input add customer reviews.
+2. Customer reviews list ditampilkan.
+
+# Case study
+1. Bila pengguna memasukan 'nama = abcd' dan 'review = abcde', maka.
+	a. Presenter akan meminta ke Model untuk memberikan response customer reviews.
+	b. Presenter akan menampilkan informasi 'success' ke View (DOM).
+2. Bila pengguna hanya mengisi salah satu inputan, maka:
+	a. Presenter akan meminta ke Model untuk memberikan semua review list dan menampilkannya pada View (DOM).
+	b. Presenter akan menampilkan informasi bahwa pengguna harus mengisi semua form input yang ada dan menampilkannya pada View (DOM).
+3. Bila pengguna tidak mengisi form input, maka:
+	a. Presenter akan meminta ke Model untuk memberikan semua review list dan menampilkannya pada View (DOM).
+	b. Presenter akan menampilkan informasi bahwa pengguna harus mengisi semua from input yang ada dan menampilkannya pada View (DOM).
+
+# TODO
+1. Ringkas kode untuk mempersiapkan test.
+	

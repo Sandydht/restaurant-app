@@ -9,7 +9,7 @@ import '../../component/not-found';
 class FavoriteRestaurantSearchView {
   getTemplate() {
     return `
-      <section class="favorite__restaurants">
+      <section class="favorite__restaurants" id="favoriteRestaurants">
         <h2 class="favorite-restaurants__heading">Favorite Cafe</h2>
         <search-favorite></search-favorite>
         <div id="favoriteRestaurantsBody" class="favorite-restaurants__body"></div>

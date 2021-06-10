@@ -1,8 +1,7 @@
+/* eslint-disable linebreak-style */
+
 // Karma configuration
 // Generated on Fri Jul 03 2020 20:15:52 GMT+0700 (Western Indonesia Time)
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
 
 module.exports = function (config) {
   config.set({
@@ -51,13 +50,6 @@ module.exports = function (config) {
           },
         ],
       },
-
-      plugins: [
-        new HtmlWebpackPlugin({
-          template: path.resolve(__dirname, 'src/templates/index.html'),
-          filename: 'index.html',
-        }),
-      ],
     },
 
     webpackMiddleware: {

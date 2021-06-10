@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable class-methods-use-this */
+
 import API_ENDPOINT from '../globals/api-endpoint';
-import CONFIG from '../globals/config';
 
 class RestaurantDbSource {
   static async restaurantsList() {
@@ -15,18 +16,7 @@ class RestaurantDbSource {
     return responseJson.restaurant;
   }
 
-  static async addCustomerReviews(reviews) {
-    const response = await fetch(API_ENDPOINT.ADD_CUSTOMER_REVIEWS, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Auth-Token': CONFIG.API_KEY,
-      },
-      body: JSON.stringify(reviews),
-    });
-    const responseJson = await response.json();
-    await this.restaurantDetail(reviews.id);
-    return responseJson;
+  static async addCustomerReviews(latestInput) {
   }
 }
 

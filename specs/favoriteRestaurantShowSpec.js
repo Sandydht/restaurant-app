@@ -2,9 +2,9 @@
 /* eslint-disable no-new */
 /* eslint-disable no-undef */
 
+import FavoriteRestaurantShowPresenter from '../src/scripts/presenters/favorite-restaurant-show-presenter';
 import FavoriteRestaurantSearchView from '../src/scripts/views/pages/liked-restaurants/favorite-restaurant-search-view';
 import FavoriteRestaurantIdb from '../src/scripts/models/favorite-restaurant-idb';
-import FavoriteRestaurantShowPresenter from '../src/scripts/presenters/favorite-restaurant-show-presenter';
 
 describe('Showing All Favorite Restaurants', () => {
   let view;
@@ -30,7 +30,7 @@ describe('Showing All Favorite Restaurants', () => {
       expect(favoriteRestaurants.getAllRestaurants).toHaveBeenCalledTimes(1);
     });
 
-    it('should show the information that no restaurants have been liked', (done) => {
+    it('should the information that no restaurants have been liked', (done) => {
       document.getElementById('favoriteRestaurantsBody').addEventListener('restaurants:updated', () => {
         expect(document.querySelectorAll('not-found').length).toEqual(1);
         done();

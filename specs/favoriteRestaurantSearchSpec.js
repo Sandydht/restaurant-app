@@ -48,20 +48,39 @@ describe('Searching Restaurants', () => {
       expect(favoriteRestaurants.searchRestaurants).toHaveBeenCalledWith('restaurant a');
     });
 
-    it('should show the found restaurants', () => {
-      presenter._showFoundRestaurants([{ id: 1, pictureId: 14 }]);
-      expect(document.querySelectorAll('restaurant-item').length).toEqual(1);
+    it('should show the restaurants found by Favorite Restaurants', (done) => {
+      document.getElementById('favoriteRestaurantsBody').addEventListener('restaurants:updated', () => {
+        expect(document.querySelectorAll('restaurant-item').length).toEqual(3);
+        done();
+      });
 
-      presenter._showFoundRestaurants([
-        { id: 1, pictureId: 14, name: 'Satu' },
-        { id: 2, pictureId: 25, name: 'Dua' },
+      favoriteRestaurants.searchRestaurants.withArgs('restaurant a').and.returnValues([
+        { id: 111, pictureId: 14, name: 'restaurant abc' },
+        { id: 222, pictureId: 16, name: 'ada juga restaurant abcde' },
+        { id: 333, pictureId: 25, name: 'ini juga boleh restaurant a' },
       ]);
-      expect(document.querySelectorAll('restaurant-item').length).toEqual(2);
+
+      searchRestaurants('restaurant a');
     });
 
-    it('should show the name of the found restaurants', () => {
-      presenter._showFoundRestaurants([{ id: 1, pictureId: 14, name: 'Satu' }]);
-      expect(document.querySelectorAll('.name').item(0).textContent).toEqual('Satu');
+    it('should show the name of the restaurants found by Favorite Restaurants', (done) => {
+      document.getElementById('favoriteRestaurantsBody').addEventListener('restaurants:updated', () => {
+        const restaurantNames = document.querySelectorAll('.name');
+
+        expect(restaurantNames.item(0).textContent).toEqual('restaurant abc');
+        expect(restaurantNames.item(1).textContent).toEqual('ada juga restaurant abcde');
+        expect(restaurantNames.item(2).textContent).toEqual('ini juga boleh restaurant a');
+
+        done();
+      });
+
+      favoriteRestaurants.searchRestaurants.withArgs('restaurant a').and.returnValues([
+        { id: 111, pictureId: 14, name: 'restaurant abc' },
+        { id: 222, pictureId: 16, name: 'ada juga restaurant abcde' },
+        { id: 333, pictureId: 25, name: 'ini juga boleh restaurant a' },
+      ]);
+
+      searchRestaurants('restaurant a');
     });
 
     it('should show - when the restaurant returned does not contain a name', (done) => {

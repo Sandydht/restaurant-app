@@ -29,6 +29,7 @@ describe('Liking A Restaurant', () => {
 
   it('should be able to like the restaurant', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
+
     document.querySelector('[aria-label="like this restaurant"]').dispatchEvent(new Event('click'));
 
     const restaurant = await FavoriteRestaurantIdb.getRestaurant(1);
@@ -42,6 +43,7 @@ describe('Liking A Restaurant', () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
 
     await FavoriteRestaurantIdb.putRestaurant({ id: 1 });
+
     document.querySelector('[aria-label="like this restaurant"]').dispatchEvent(new Event('click'));
 
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([{ id: 1 }]);
@@ -50,9 +52,10 @@ describe('Liking A Restaurant', () => {
   });
 
   it('should not add a restaurant when it has no id', async () => {
-    await TestFactories.createLikeButtonPresenterWithRestaurant({ });
+    await TestFactories.createLikeButtonPresenterWithRestaurant({});
 
     document.querySelector('[aria-label="like this restaurant"]').dispatchEvent(new Event('click'));
+
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
   });
 });

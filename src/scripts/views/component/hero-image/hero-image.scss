@@ -5,7 +5,7 @@ hero-image {
       rgba($color: #000000, $alpha: 0.5),
       rgba($color: #000000, $alpha: 0.5)
     ),
-    url("/images/heros/hero-image_2.jpg");
+    url("/images/hero-image_2-small.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -36,5 +36,10 @@ hero-image {
 @media screen and (min-width: 1024px) {
   hero-image {
     height: 500px;
+    background-image: linear-gradient(
+        rgba($color: #000000, $alpha: 0.5),
+        rgba($color: #000000, $alpha: 0.5)
+      ),
+      url("/images/hero-image_2-large.jpg");
   }
 }

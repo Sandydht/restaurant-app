@@ -13,7 +13,7 @@ class RestaurantItem extends HTMLElement {
   render() {
     this.innerHTML = `
       <div class="heading">
-        <img src="${CONFIG.BASE_IMAGE_URL + this._restaurant.pictureId}" alt="${this._restaurant.name || '-'}">
+        <img class="lazyload" width="100%" height="100%" data-src="${CONFIG.BASE_IMAGE_URL + this._restaurant.pictureId}" alt="${this._restaurant.name || '-'}">
 
         <p class="city">${this._restaurant.city || '-'}</p>
       </div>

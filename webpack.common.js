@@ -8,12 +8,14 @@ const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/scripts/index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].[contenthash].js',
   },
   module: {
     rules: [
@@ -68,9 +70,22 @@ module.exports = {
         }),
       ],
     }),
+    new HtmlCriticalWebpackPlugin({
+      base: path.resolve(__dirname, 'dist'),
+      src: 'index.html',
+      dest: 'index.html',
+      inline: true,
+      minify: true,
+      extract: true,
+      penthouse: {
+        blockJSRequests: false,
+      },
+    }),
     new BundleAnalyzerPlugin(),
+    new CleanWebpackPlugin(),
   ],
   optimization: {
+    moduleIds: 'hashed',
     splitChunks: {
       chunks: 'all',
       minSize: 20000,

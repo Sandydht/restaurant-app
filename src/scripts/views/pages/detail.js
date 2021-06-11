@@ -7,7 +7,6 @@ import UrlParser from '../../routes/url-parser';
 import FavoriteRestaurantIdb from '../../models/favorite-restaurant-idb';
 import LikeButtonPresenter from '../../presenters/like-button-presenter';
 
-import '../component/spinner-loading';
 import '../component/restaurant-detail';
 import '../component/restaurant-categories';
 import '../component/restaurant-menus';

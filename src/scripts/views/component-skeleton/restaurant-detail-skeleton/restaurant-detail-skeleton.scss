@@ -1,0 +1,68 @@
+/** @format */
+
+restaurant-detail-skeleton {
+  overflow: hidden;
+  display: grid;
+  gap: 10px;
+  font-size: 12pt;
+
+  .heading {
+    position: relative;
+    height: 200px;
+
+    .img {
+      width: 100%;
+      height: 100%;
+      background-color: #e3e3e3;
+    }
+
+    .city {
+      position: absolute;
+      top: 20px;
+      padding: 10px 20px;
+      background-color: white;
+      color: white;
+    }
+  }
+
+  .body {
+    display: grid;
+    gap: 10px;
+
+    .rating,
+    .name,
+    .address {
+      font-weight: bold;
+      background-color: #e3e3e3;
+      color: #e3e3e3;
+    }
+
+    .name {
+      font-size: 14pt;
+    }
+
+    .description {
+      background-color: #e3e3e3;
+      color: #e3e3e3;
+      line-height: 1.5em;
+    }
+  }
+}
+
+@media screen and (min-width: 550px) {
+  restaurant-detail-skeleton {
+    .heading {
+      height: 300px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  restaurant-detail-skeleton {
+    width: 700px;
+
+    .heading {
+      height: 500px;
+    }
+  }
+}

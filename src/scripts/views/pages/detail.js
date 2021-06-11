@@ -13,14 +13,38 @@ import '../component/restaurant-categories';
 import '../component/restaurant-menus';
 import '../component/review-list';
 import '../component/like-button';
+import '../component-skeleton/restaurant-detail-skeleton';
+import '../component-skeleton/restaurant-categories-skeleton';
+import '../component-skeleton/restaurant-menus-skeleton';
+import '../component-skeleton/review-list-skeleton';
+import '../component-skeleton/review-item-skeleton';
 
 const Detail = {
   async render() {
-    return '<spinner-loading></spinner-loading>';
+    return `
+        <section class="restaurant">
+          <h2 class="restaurant__heading restaurant__heading__skeleton">Detail Cafe</h2>
+          <div class="restaurant__body">
+            <restaurant-detail-skeleton></restaurant-detail-skeleton>
+            <hr>
+            <restaurant-categories-skeleton></restaurant-categories-skeleton>
+            <hr>
+            <restaurant-menus-skeleton></restaurant-menus-skeleton>
+            <hr>
+            <p style="font-size: 14pt; font-weight: bold; background-color: #e3e3e3; color: #e3e3e3;">Customer Reviews</p>
+            <review-list-skeleton></review-list-skeleton>
+          </div>
+        </section>
+    `;
   },
 
   async afterRender() {
+    document.querySelector('restaurant-categories-skeleton').count = 3;
+    document.querySelector('restaurant-menus-skeleton').count = 3;
+    document.querySelector('review-list-skeleton').count = 3;
+
     const mainContent = document.getElementById('mainContent');
+
     try {
       const url = UrlParser.parseActiveUrlWithoutCombiner();
       const restaurant = await RestaurantDbSource.restaurantDetail(url.id);

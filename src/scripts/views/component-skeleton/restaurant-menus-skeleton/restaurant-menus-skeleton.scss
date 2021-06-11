@@ -1,0 +1,61 @@
+/** @format */
+
+restaurant-menus-skeleton {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+
+  .foods {
+    display: grid;
+    gap: 10px;
+    grid-template-rows: auto 1fr;
+
+    .foods__heading {
+      font-weight: bold;
+      font-size: 14pt;
+      background-color: #e3e3e3;
+      color: #e3e3e3;
+    }
+
+    .foods__body {
+      margin-left: 20px;
+      display: grid;
+      gap: 10px;
+
+      li {
+        background-color: #e3e3e3;
+        color: #e3e3e3;
+      }
+    }
+  }
+
+  .drinks {
+    display: grid;
+    gap: 10px;
+    grid-template-rows: auto 1fr;
+
+    .drinks__heading {
+      font-weight: bold;
+      font-size: 14pt;
+      background-color: #e3e3e3;
+      color: #e3e3e3;
+    }
+
+    .drinks__body {
+      margin-left: 20px;
+      display: grid;
+      gap: 10px;
+
+      li {
+        background-color: #e3e3e3;
+        color: #e3e3e3;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  restaurant-menus {
+    width: 700px;
+  }
+}

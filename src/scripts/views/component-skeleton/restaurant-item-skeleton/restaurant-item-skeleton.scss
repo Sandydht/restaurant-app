@@ -1,8 +1,6 @@
 /** @format */
-// color palette
-$color__primary: #02475e;
 
-restaurant-item {
+restaurant-item-skeleton {
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -12,10 +10,9 @@ restaurant-item {
     position: relative;
     height: 200px;
 
-    img {
+    .img {
+      background-color: #e3e3e3;
       width: 100%;
-      object-fit: cover;
-      object-position: center;
       height: 100%;
     }
 
@@ -23,7 +20,7 @@ restaurant-item {
       position: absolute;
       top: 20px;
       padding: 10px 20px;
-      background-color: black;
+      background-color: white;
       color: white;
     }
   }
@@ -35,6 +32,8 @@ restaurant-item {
 
     .rating,
     .name {
+      background-color: #e3e3e3;
+      color: #e3e3e3;
       font-weight: bold;
     }
 
@@ -43,6 +42,8 @@ restaurant-item {
     }
 
     .description {
+      background-color: #e3e3e3;
+      color: #e3e3e3;
       display: -webkit-box;
       -webkit-line-clamp: 10;
       -webkit-box-orient: vertical;
@@ -54,19 +55,15 @@ restaurant-item {
   .actions {
     padding: 0 20px 20px 20px;
 
-    a {
+    p {
       display: inline-flex;
-      align-items: center;
-      justify-content: center;
       min-width: 44px;
       min-height: 44px;
-      text-decoration: none;
-      color: $color__primary;
+      align-items: center;
+      justify-content: center;
       font-size: 14pt;
-    }
-
-    a:hover {
-      font-weight: bold;
+      background-color: #e3e3e3;
+      color: #e3e3e3;
     }
   }
 }

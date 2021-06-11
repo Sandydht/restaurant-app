@@ -5,15 +5,27 @@ import RestaurantDbSource from '../../models/restaurantdb-source';
 
 import '../component/hero-image';
 import '../component/restaurant-list';
-import '../component/spinner-loading';
+import '../component-skeleton/hero-image-skeleton';
+import '../component-skeleton/restaurant-list-skeleton';
 import '../component/not-found';
 
 const Home = {
   async render() {
-    return '<spinner-loading></spinner-loading>';
+    return `
+      <hero-image-skeleton></hero-image-skeleton>
+      <section class="restaurants" id="restaurants">
+        <h2 class="restaurants__heading restaurants__heading__skeleton">Explore Cafe</h2>
+        <div class="restaurants__body">
+          <restaurant-list-skeleton></restaurant-list-skeleton>
+        </div>
+      </section>
+    `;
   },
 
   async afterRender() {
+    const restaurantListSkeleton = document.querySelector('restaurant-list-skeleton');
+    restaurantListSkeleton.count = 20;
+
     const mainContent = document.getElementById('mainContent');
 
     try {

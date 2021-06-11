@@ -55,6 +55,12 @@ body {
     text-align: center;
   }
 
+  .restaurants__heading.restaurants__heading__skeleton,
+  .restaurant__heading.restaurant__heading__skeleton {
+    background-color: #e3e3e3;
+    color: #e3e3e3;
+  }
+
   .restaurants__body,
   .restaurant__body {
     padding: 0 20px 20px 20px;

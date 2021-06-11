@@ -1,0 +1,37 @@
+/** @format */
+
+review-item-skeleton {
+  display: grid;
+  gap: 10px;
+  grid-template-rows: auto 1fr;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+
+  .heading {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr auto;
+
+    .name {
+      font-weight: bold;
+      font-size: 14pt;
+      background-color: #e3e3ee;
+      color: #e3e3e3;
+    }
+
+    .date {
+      font-size: 12pt;
+      background-color: #e3e3ee;
+      color: #e3e3e3;
+    }
+  }
+
+  .body {
+    .review {
+      font-size: 12pt;
+      background-color: #e3e3ee;
+      color: #e3e3e3;
+    }
+  }
+}

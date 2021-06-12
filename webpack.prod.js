@@ -3,6 +3,8 @@
 
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
+const path = require('path');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -10,6 +12,17 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       ignoreOrder: false,
+    }),
+    new HtmlCriticalWebpackPlugin({
+      base: path.resolve(__dirname, 'dist'),
+      src: 'index.html',
+      dest: 'index.html',
+      inline: true,
+      minify: true,
+      extract: true,
+      penthouse: {
+        blockJSRequests: false,
+      },
     }),
   ],
   module: {

@@ -38,7 +38,7 @@ class FavoriteRestaurantSearchView {
       notFound.message = 'No favorite cafe was selected';
     }
 
-    favoriteRestaurantsBody.dispatchEvent(new Event('restaurants:updated'));
+    document.getElementById('favoriteRestaurants').dispatchEvent(new Event('restaurants:updated'));
   }
 }
 

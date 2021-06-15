@@ -25,19 +25,23 @@ class CustomerReviewAddPresenter {
       review: latestInput.review,
     };
 
-    let restaurant;
+    try {
+      let restaurant;
+      restaurant = await this._restaurantDbSource.addCustomerReview(this._latestInput);
+      if (restaurant.error === false) {
+        this._view.showSnackbar({ show: true, error: false, message: restaurant.message });
 
-    restaurant = await this._restaurantDbSource.addCustomerReview(this._latestInput);
-    if (restaurant.error === false) {
-      this._view.showSnackbar({ show: true, error: false, message: restaurant.message });
+        this._showCustomerReview(restaurant);
+        this._view.disbledSubmitReviewButton(false);
+      } else {
+        this._view.showSnackbar({ show: true, error: true, message: restaurant.message });
 
-      this._showCustomerReview(restaurant);
-      this._view.disbledSubmitReviewButton(false);
-    } else {
-      this._view.showSnackbar({ show: true, error: true, message: restaurant.message });
-
-      restaurant = await this._restaurantDbSource.restaurantDetail(this._restaurant.id);
-      this._showCustomerReview(restaurant);
+        restaurant = await this._restaurantDbSource.restaurantDetail(this._restaurant.id);
+        this._showCustomerReview(restaurant);
+        this._view.disbledSubmitReviewButton(false);
+      }
+    } catch (e) {
+      this._view.showSnackbar({ show: true, error: true, message: 'Failed to send your review. Please check your internet connection' });
       this._view.disbledSubmitReviewButton(false);
     }
   }

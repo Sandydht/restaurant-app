@@ -8,7 +8,7 @@ import '../../component/snackbar-component';
 class CustomerReviewView {
   getTemplate() {
     return `
-      <customer-review></customer-review>
+      <customer-review id="customerReview"></customer-review>
       <review-list></review-list>
       <snackbar-component></snackbar-component>
     `;

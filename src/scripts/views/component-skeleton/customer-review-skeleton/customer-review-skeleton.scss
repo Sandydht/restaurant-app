@@ -1,0 +1,67 @@
+/** @format */
+
+// color palette
+$color: #e3e3e3;
+
+customer-review-skeleton {
+  display: grid;
+  gap: 20px;
+  grid-template-rows: auto 1fr;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  grid-template-rows: auto 1fr;
+
+  .heading {
+    p {
+      background-color: $color;
+      color: $color;
+      font-weight: bold;
+      font-size: 14pt;
+    }
+  }
+
+  .body {
+    display: grid;
+    gap: 10px;
+    font-size: 12pt;
+
+    .customer-review__input-name,
+    .customer-review__input-review {
+      display: grid;
+      gap: 5px;
+
+      p {
+        display: inline-flex;
+        width: 100%;
+        min-width: 44px;
+        min-height: 44px;
+        padding: 10px;
+        font-size: 12pt;
+        border-radius: 5px;
+        outline: none;
+        resize: none;
+        background-color: $color;
+        color: $color;
+      }
+    }
+
+    .customer-review__submit-review {
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-width: 44px;
+        min-height: 44px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: none;
+        text-transform: uppercase;
+        background-color: $color;
+        color: $color;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}

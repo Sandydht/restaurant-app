@@ -6,15 +6,18 @@ import RestaurantDbSource from '../../models/restaurantdb-source';
 import UrlParser from '../../routes/url-parser';
 import FavoriteRestaurantIdb from '../../models/favorite-restaurant-idb';
 import LikeButtonPresenter from '../../presenters/like-button-presenter';
+import CustomerReviewView from './added-customer-review/customer-review-view';
+import CustomerReviewAddPresenter from '../../presenters/customer-review-add-presenter';
+import CustomerReviewShowPresenter from '../../presenters/customer-review-show-presenter';
 
 import '../component/restaurant-detail';
 import '../component/restaurant-categories';
 import '../component/restaurant-menus';
-import '../component/review-list';
 import '../component/like-button';
 import '../component-skeleton/restaurant-detail-skeleton';
 import '../component-skeleton/restaurant-categories-skeleton';
 import '../component-skeleton/restaurant-menus-skeleton';
+import '../component-skeleton/customer-review-skeleton';
 import '../component-skeleton/review-list-skeleton';
 import '../component-skeleton/review-item-skeleton';
 
@@ -30,7 +33,7 @@ const Detail = {
             <hr>
             <restaurant-menus-skeleton></restaurant-menus-skeleton>
             <hr>
-            <p style="font-size: 14pt; font-weight: bold; background-color: #e3e3e3; color: #e3e3e3;">Customer Reviews</p>
+            <customer-review-skeleton></customer-review-skeleton>
             <review-list-skeleton></review-list-skeleton>
           </div>
         </section>
@@ -47,6 +50,7 @@ const Detail = {
     try {
       const url = UrlParser.parseActiveUrlWithoutCombiner();
       const restaurant = await RestaurantDbSource.restaurantDetail(url.id);
+      const view = new CustomerReviewView();
 
       mainContent.innerHTML = `
         <section class="restaurant">
@@ -58,8 +62,7 @@ const Detail = {
             <hr>
             <restaurant-menus></restaurant-menus>
             <hr>
-            <p style="font-size: 14pt; font-weight: bold;">Customer Reviews</p>
-            <review-list></review-list>
+            ${view.getTemplate()}
           </div>
         </section>
         <like-button></like-button>
@@ -68,7 +71,18 @@ const Detail = {
       document.querySelector('restaurant-detail').restaurant = restaurant;
       document.querySelector('restaurant-categories').restaurant = restaurant;
       document.querySelector('restaurant-menus').restaurant = restaurant;
-      document.querySelector('review-list').restaurant = restaurant;
+
+      new CustomerReviewAddPresenter({
+        view,
+        restaurant,
+        restaurantDbSource: RestaurantDbSource,
+      });
+
+      new CustomerReviewShowPresenter({
+        view,
+        restaurant,
+        restaurantDbSource: RestaurantDbSource,
+      });
 
       await LikeButtonPresenter.init({
         likeButtonContainer: document.querySelector('like-button'),
